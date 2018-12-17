@@ -1,0 +1,17 @@
+# Latex specific
+*.log
+*.lof
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.aux
+*.blg
+*.synctex.gz
+*.bbl
+*.toc
+*.fdb_latexmk
