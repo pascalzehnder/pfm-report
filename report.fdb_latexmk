@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex report"] 1545058712 "report.aux" "report.bbl" "report" 1545058715
+["bibtex report"] 1545119444 "report.aux" "report.bbl" "report" 1545119446
   "/usr/local/texlive/2018/texmf-dist/bibtex/bst/beebe/authordate1.bst" 1480098434 31058 828482c12b00a9ca2a0ebd21b33e13ba ""
   "bachelor_thesis.bib" 0 -1 0 ""
-  "report.aux" 1545058714 883 0d10201481c534898f511ef6baac8eaa ""
+  "report.aux" 1545119446 883 0d10201481c534898f511ef6baac8eaa ""
   (generated)
-  "report.bbl"
   "report.blg"
-["lualatex"] 1545058712 "report.tex" "report.pdf" "report" 1545058715
+  "report.bbl"
+["lualatex"] 1545119444 "report.tex" "report.pdf" "report" 1545119446
   "/Users/pascalzehnder/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1545058187 136017 73339eaa53d5ee9fcd41cd40e024cb6a ""
   "/Users/pascalzehnder/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc" 1545058188 136748 dc7b66ddef1f87c8ecef9594fa4ba63d ""
   "/Users/pascalzehnder/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1545058187 134930 00ae4e6b8bb3b328fba6fb1bcf4ea21b ""
@@ -225,17 +225,17 @@
   "/usr/local/texlive/2018/texmf-var/tex/generic/config/language.dat" 1523934486 6539 8970f26ad6444c6f1b5b6efbca20a7d7 ""
   "/usr/local/texlive/2018/texmf-var/web2c/luatex/lualatex.fmt" 1545058056 1360355 21ac3cdba2b73d89611ada2ad3372a1b ""
   "img/InvestmentSolutions.jpg" 1544193497 742589 325f4d742f468d31ee58d9a5bbb78f5d ""
-  "report.aux" 1545058714 883 0d10201481c534898f511ef6baac8eaa ""
+  "report.aux" 1545119446 883 0d10201481c534898f511ef6baac8eaa ""
   "report.bbl" 0 -1 0 "bibtex report"
-  "report.out" 1545058714 49 3318cee17f5dd321e6f43684bd0efcb0 ""
-  "report.tex" 1545058709 4324 cfb84d8a1790d84e5f4f2cd4b0b29f79 ""
-  "report.toc" 1545058714 117 5ab87f4341d688a5de7a8b7642d82357 ""
+  "report.out" 1545119446 49 3318cee17f5dd321e6f43684bd0efcb0 ""
+  "report.tex" 1545119440 3991 075c4b6aab0bfb09215ab528300b7477 ""
+  "report.toc" 1545119446 117 5ab87f4341d688a5de7a8b7642d82357 ""
   "sections/01_Introduction.tex" 1545058313 23 0724ce7a131568ad239c1aac91dfb03b ""
   (generated)
   "report.aux"
-  "report.lot"
-  "report.out"
-  "report.pdf"
-  "report.log"
   "report.lof"
   "report.toc"
+  "report.lot"
+  "report.log"
+  "report.out"
+  "report.pdf"
