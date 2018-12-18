@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex report"] 1545141732 "report.aux" "report.bbl" "report" 1545141735
+["bibtex report"] 1545143349 "report.aux" "report.bbl" "report" 1545143351
   "/usr/local/texlive/2018/texmf-dist/bibtex/bst/beebe/authordate1.bst" 1480098434 31058 828482c12b00a9ca2a0ebd21b33e13ba ""
   "bachelor_thesis.bib" 0 -1 0 ""
-  "report.aux" 1545141734 1962 4fcac803b6545a643323b6f1f061f6f4 ""
+  "report.aux" 1545143351 2224 6a28f3c9d28f228cde7d19d5ccfc353e ""
   (generated)
-  "report.bbl"
   "report.blg"
-["lualatex"] 1545141732 "report.tex" "report.pdf" "report" 1545141735
+  "report.bbl"
+["lualatex"] 1545143349 "report.tex" "report.pdf" "report" 1545143351
   "/Users/pascalzehnder/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1545058187 136017 73339eaa53d5ee9fcd41cd40e024cb6a ""
   "/Users/pascalzehnder/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc" 1545058188 136748 dc7b66ddef1f87c8ecef9594fa4ba63d ""
   "/Users/pascalzehnder/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1545058187 134930 00ae4e6b8bb3b328fba6fb1bcf4ea21b ""
@@ -226,22 +226,22 @@
   "/usr/local/texlive/2018/texmf-var/web2c/luatex/lualatex.fmt" 1545058056 1360355 21ac3cdba2b73d89611ada2ad3372a1b ""
   "img/InvestmentSolutions.jpg" 1544193497 742589 325f4d742f468d31ee58d9a5bbb78f5d ""
   "img/architecture.png" 1545141632 76844 408d9540a4f86d4d2c53fd042c00252c ""
-  "report.aux" 1545141734 1962 4fcac803b6545a643323b6f1f061f6f4 ""
+  "report.aux" 1545143351 2224 6a28f3c9d28f228cde7d19d5ccfc353e ""
   "report.bbl" 0 -1 0 "bibtex report"
-  "report.out" 1545141734 631 fee95ec5b854712a9b30da16392b4428 ""
+  "report.out" 1545143351 794 dea38510fb1d65bb3535159fa8bb10db ""
   "report.tex" 1545124853 2887 ef1a5b4670f4be167909fad9c2142ff8 ""
-  "report.toc" 1545141734 852 5cadd3c2ddf3441757e68e7b7fac78d3 ""
-  "sections/01_Motivation.tex" 1545124894 181 9d93c6cb83c82a19a3c8bb723ace66c8 ""
+  "report.toc" 1545143351 1060 f320e9197b10cf73fab595d5595ab513 ""
+  "sections/01_Motivation.tex" 1545143010 198 f638a9ec2d81b746b556ea0c29e7d80f ""
   "sections/02_Project_Description.tex" 1545124920 951 f67ec4df9aa80892543042a1d1009daa ""
-  "sections/03_Procedure.tex" 1545124996 163 cb14b9419036b316172dd385ed85e689 ""
-  "sections/04_Architecture.tex" 1545141717 104 b37b5ab29e733436b2cbeab9cbc9d835 ""
+  "sections/03_Procedure.tex" 1545143266 541 1894e621db960a20577d5fe2e924e2a3 ""
+  "sections/04_Architecture.tex" 1545142774 430 643e3cbcce9679dbd1a78338916a93b8 ""
   "sections/05_Application_Overview.tex" 1545124994 84 80d3e0a58176f05a50b1a879525daa10 ""
   "sections/06_Future.tex" 1545124822 29 0725bb775c1af300ec4fb30e2ee350b2 ""
   (generated)
   "report.aux"
-  "report.out"
-  "report.lof"
+  "report.lot"
   "report.pdf"
+  "report.out"
   "report.log"
   "report.toc"
-  "report.lot"
+  "report.lof"
