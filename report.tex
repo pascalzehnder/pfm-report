@@ -1,5 +1,5 @@
 % Standard 10pt
-\documentclass[a4paper,twoside, openright]{report}
+\documentclass[a4paper,twoside, openright]{scrartcl}
 
 \usepackage[utf8]{inputenc}
 \usepackage{fontspec, emptypage}
@@ -95,17 +95,6 @@
 \pagenumbering{roman}
 
 % ----------------------------------------
-% Abstract auf English
-% ----------------------------------------
-\selectlanguage{english}%
-\chapter*{Abstract}
-In numerous industries modern technologies more and more find its application. Multiple surveys about advisory servies in the financial sector came to the conclusion that various banking institutions are still using pen and paper during an advisory service. IT-supported artefacts furthermore can't find their application in financial advisory services.\\
-
-In previous works a fundamental acceptance of using IT-supported artefacts in financial advisory services could be recognized on the part of customer and advisor. In comparison to a conventional advisory service an additional benefit could be recognized.\\
-
-Based on the analysis of a previous prototype and particular conventional advice giving, as well as interviews with customers and advisors, requirements for an optimally designed prototype were generated. The main focus of the task was on the development of the prototype. The implemented prototype was then evaluated in a focus group. The feedback of the participants confirmed the improvement of the usability and labor practices of the advisors which was a consequence of conscious adjustments and newly developed features.
-
-% ----------------------------------------
 % Inhaltsübersicht
 % ----------------------------------------
 \tableofcontents
@@ -117,7 +106,15 @@ Based on the analysis of a previous prototype and particular conventional advice
 % ----------------------------------------
 \pagestyle{headings}
 \pagenumbering{arabic}
-\input{sections/01_Introduction.tex}
+
+\input{sections/01_Motivation.tex}
+\input{sections/02_Project_Description.tex}
+\input{sections/03_Procedure.tex}
+\input{sections/04_Architecture.tex}
+\input{sections/05_Application_Overview.tex}
+\input{sections/06_Future.tex}
+
+
 \newpage
 
 % ----------------------------------------
