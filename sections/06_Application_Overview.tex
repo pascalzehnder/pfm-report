@@ -1,23 +1,72 @@
 \section{Application Overview}
-
-% User Flow sehr wichtig mit Screens etc.
-
-\subsection{Architecture}
-
-\begin{center}
-  \includegraphics[scale=0.45]{img/architecture.png}
-\end{center}
-
-\subsubsection{Frontend}
-We use the React Framework which is developed by Facebook. Based on NextJS.
-
-\subsubsection{API}
-Bla
-
-
-\subsubsection{Model}
-All calculations of the simulation are performed in a python-model which interacts with the time series data stored on an InfluxDB. A Restful service fetches the data from the model.
+For playing the game an administrator of a specified game and an infinite number of teams have to interact together for playing this simulation.
 
 \subsection{Administration}
+All administrative tasks will be described in this part.
+
+\subsubsection{Administrator login}
+An administrator needs to have a login for having all adminstrative functionalities. Therefore he has to provide his credentials on the following screen which he reach by following the instructions on the start page.
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/login.png}
+\end{center}
+
+\subsubsection{Game management}
+\paragraph{Game overview}
+As landing page of the administrator the game overview exists. It serves as the control center of the game adminstration.
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/game_overview.png}
+\end{center}
+
+\paragraph{Game creation}
+For creating a game the administrator needs to define some parameters for playing a game which are structured into three tabs. By pressing on the ''next''-button the administrator will be leaded through the form. Some tooltips help users to understand the purpose of the provided input. After submitting the creation of the game, the user will be redirected to the game overview.
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/game_creation.png}
+\end{center}
+
+\paragraph{Game detail}
+The game detail for each game may be accessed over the game overview list. In this page a user can intialize period, start periods, having an overview about the teams submission and many other features, which will be described in this part:
+
+\subparagraph{Game initialization}
+As the game creation may be done in advance we have splitten the game creation from the game initialization, such that last adjustments of the game may be done just before the start of the game.
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/game_initialization.png}
+\end{center}
+
+\subparagraph{Game start}
+By starting the game the students or teams are finally able to start with their period 0 decisions. Administrators are able to give them some help over messages which will be visible for the teams in their report section.
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/game_start.png}
+\end{center}
+
+\subparagraph{Team overview}
+For providing access for all teams an administrator has an overview about the team logins, which are generated automatically when initializing the game.
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/team_login_overview.png}
+\end{center}
+
+\subparagraph{Running game}
+Overview about the submission state of all teams
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/running_game.png}
+\end{center}
+
+
+
+
 
 \subsection{Team View}
+
+\subsubsection{Login}
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/teams/startpage.png}
+\end{center}
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/teams/login.png}
+\end{center}
+
+\subsection{Period 0 decisions}
+% TODO
+Giving a name and SAA
+\begin{center}
+  \includegraphics[scale=0.2]{img/application-overview/teams/period_zero_decisions.png}
+\end{center}
