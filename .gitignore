@@ -15,3 +15,6 @@
 *.bbl
 *.toc
 *.fdb_latexmk
+
+
+.DS_Store
