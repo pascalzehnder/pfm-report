@@ -25,9 +25,12 @@ A third observation chance was the Master seminar ''Advanced Portfolio Managemen
 
 A large number of observed students and practitioners help to gain an overview of the game process and especially from the player’s point of view obsolete or requested elements regarding the simulation. As result of thos observations and interview with students and professionals, following work model has been defined for a typical investment process: \\
 
-\begin{center}
+\begin{figure}[h!]
+  \centering
   \includegraphics[scale=0.35]{img/work_model_process.png}
-\end{center}
+  \caption{Work model - global overview}
+\end{figure}
+
 
 Additionally, a number of relevant observations made by the authors as well as the seminar conductors and feedbacks from the participants during the three sessions is depicted – please note that in order to fully understand some of the following aspects, the reader should have seen the old version of the simulation:
 \begin{itemize}
@@ -40,12 +43,16 @@ Additionally, a number of relevant observations made by the authors as well as t
 
 The observation of the different players – students and practitioners, investment beginners and experts – allowed the project team to sense, what the strengths and weaknesses of the old game are. Further, it helped to define an impact direction for the new game being developed, which resulted in another work model describing the process of the game based on its different phases. % TODO more about customer types etc.
 
-\begin{center}
+\begin{figure}[h!]
+  \centering
   \includegraphics[scale=0.25]{img/work_model_pfm_game.png}
-\end{center}
+  \caption{Work model - portfolio management game}
+\end{figure}
 
 \subsection{Design and Iterative Prototyping}
-Initially the authors designed multiple screens based on the predefined work model. Using a sketching software the basic screens for the students process which includes the SAA, TAA, depot relization and business administration were prototyped. As the team realized that the game does not only consist of screens from a student persepctive they decided, due to time constraints, to start implementing screens by iterative prototyping. \\
+Initially the authors designed multiple screens based on the predefined work model. Using a sketching software the basic screens for the students process which includes the SAA, TAA, depot realization and business administration were prototyped. As the team realized that the game does not only consist of screens from a student persepctive they decided, due to time constraints, to start implementing screens by iterative prototyping. \\
 
-Multiple concepts had to be defined, such as how to model the game session management.
-% TODO more
+Multiple concepts had to be defined, such as how to model the game session management. By defining a timeline the administrative user always gets a direct response of the state of the game. This colorfoul timeline builids the base of the game detail screen, while other visualizations or forms depend on the state of the game.\\
+
+Another big concept was defining the process of the students input. The process is depicted on the top located game navigation bar on the right corner. Each process task (SAA, TAA, depot realization, business administration) has its own progress state. Different concepts have been tried to model this process best intuitive for the users.
+% TODO more?
