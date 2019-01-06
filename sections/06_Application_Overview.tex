@@ -51,6 +51,7 @@ By starting the game the students or teams are finally able to start with their 
 
 
 \subparagraph{Team overview}
+\label{subparagraph:team_overview}
 For providing access for all teams an administrator has an overview about the team logins, which are generated automatically when initializing the game.
 \begin{figure}[h!]
   \centering
@@ -91,6 +92,7 @@ For presentation of the teams result in between two running periods being played
 \subsubsection{Entities administration}
 
 \paragraph{Assets}
+All assets are visible within this page. They can be synchronized to the current definition within the market repository. % TODO on what?
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/entities_assets.png}
@@ -99,15 +101,16 @@ For presentation of the teams result in between two running periods being played
 
 
 \paragraph{Asset Types}
-A table showing all asset types which may be edited is the landing page of this entity. By editing a specified asset type the administrator can change some characteristics of its type, such as info text.
+A table showing all asset types which may be edited is the landing page of this entity. By editing a specified asset type the administrator can change some characteristics of its type, such as info text as shown in figure~\ref{fig:asset_types}.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/entities_asset_types.png}
   \caption{Asset types administration}
+  \label{fig:asset_types}
 \end{figure}
 
 \paragraph{Currencies}
-The currencies may be edited in a same manner as the asset types.
+The currencies may be edited in a same manner as the asset types. By submitting the displaying name or symbol of the corresponding currency may be changed.
 
 \paragraph{Customer Types}
 An overview about all in the game available customer types is provided for the administrator. For each customer type the ideal strategic asset allocation and the ranges for currencies and asset types (both dimensions) can be modified. Additionaly the info bullets and the displaying name may be modified too.
@@ -131,13 +134,14 @@ Short overview about all sectors which are used in the asset overview.
 %\begin{center}
 %  \includegraphics[scale=0.2]{img/application-overview/teams/startpage.png}
 %\end{center}
+By accessing the starting page, a team has to input a game short id which is provided from the administrator. Afterwards, the team has to login within a correct game identifier to participate within a game. The login credentials are accessible from the administrator screen fro each team (Paragraph~\ref{subparagraph:team_overview}).
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/teams/01_login.png}
   \caption{Team login}
 \end{figure}
 
-\subsection{Period 0 decisions}
+\subsubsection{Period 0 decisions}
 In period 0 which represents phase 1 of the game, the teams define their SAA for all customer types which are enabled by the administrator of the specific game. The teams need to fullfill the ranges for all dimensions to submit their decisions. Supportive graphs in form of pie charts help the teams to decide about the share of the two dimensions. Additionaly the players can name their team on the top left corner of the screen.
 \begin{figure}[h!]
   \centering
@@ -145,12 +149,12 @@ In period 0 which represents phase 1 of the game, the teams define their SAA for
   \caption{Period zero decisions}
 \end{figure}
 
-\subsection{Other periods decisions}
+\subsubsection{Other periods decisions}
 Starting from period 1, a team has to complete multiple decisions separated into four pages. A strategic asset allocation is fixed and non editable for a customer type which was defined at the beginning of the game. When the administrator defines a new customer type for an upcoming period, the teams have to allocate an SAA for the new customer type.\\
 
 For each step within this process, a progress state helps the teams to understand the state of each step. For saving their decisions, all four steps have to be completed. In the bottom left corner the submission state may be seen.
 
-\subsubsection{TAA}
+\paragraph{TAA}
 For the tactical asset allocation the teams can deviate from the SAA due to changes in the overall market. Equal to the strategic asset allocation screen the teams change the input within the table and get a illustrative support with two graphs, displaying the allocations for both dimensions of the table. Initially the inputs from the strategic asset allocation are loaded, whereas the students can adjust them to market changes. Arrows within the total summation of each asset type or currency show the status of being within the range.
 \begin{figure}[h!]
   \centering
@@ -158,7 +162,7 @@ For the tactical asset allocation the teams can deviate from the SAA due to chan
   \caption{Tactical asset allocation}
 \end{figure}
 
-\subsubsection{Depot Realization}
+\paragraph{Depot Realization}
 Based on SAA and TAA the teams finally have to allocate on specific assets. By having a bar chart on the top of the screen, students have an overview about their SAA and TAA decisions of the current active customer type. A target for the students is to allocate assets such taht the yellow bar aligns with TAA for each asset type/currency combination. On the top right corner a short summary about the most important key numbers for the allocations is present.
 % TODO table description with filters etc.
 This process has to be repeated for each customer type defined by navigating on the left menu. Equal to the SAA and TAA screen, the progress of the customer types is highlighted with checkmarks and corresponding colors.
@@ -169,7 +173,7 @@ This process has to be repeated for each customer type defined by navigating on 
   \caption{Depot realization}
 \end{figure}
 
-\subsubsection{Business Administration}
+\paragraph{Business Administration}
 Business administration operates as the final decisions for a period. On the left side of the screen teams input numbers for four different categories: Conditions \& Fees, Human ressources, logistics and profit ditribution. For each input field the intial value (in period 1) or the previous period value (for all other periods) is displayed next to the input field.\\
 
 On the right side the balance sheet from the previous period is visualized to inform teams about their business results. Further key information is displayed on top of the balance sheet.
