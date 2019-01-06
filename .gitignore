@@ -15,6 +15,6 @@
 *.bbl
 *.toc
 *.fdb_latexmk
-
-
+*.pdf
+*.synctex(busy)
 .DS_Store
