@@ -35,20 +35,25 @@ During processing of the CSV definition of all assets, the module will increment
 The performance attribution module is the first module in the sequence of model calculations that are applied to an incoming period scoring request (i.e., a request made by the game master on completion of a game period).
 
 % modules/performance_attribution/influx.py
+\subsubsection{InfluxDB Querying}
 As can be seen in \ref{fig:market_model_overview}, one of the most important responsibilities of the performance attribution module is handling all data querying from the InfluxDB time-series database. Based on the incoming depot allocations of all participating teams, the module fetches all necessary asset and benchmark values from the database.\footnote{See pfm-model/api/modules/performance\_attribution/influx.py}
 
 % modules/performance_attribution/returns.py
+\subsubsection{Asset \& Benchmark Returns}
 For all of these extracted time-series, returns need to be calculated in order to be able to continue with portfolio construction steps. All computations later in the sequence will be based on these relative return measures and not on any absolute values of the time-series.\footnote{See pfm-model/api/modules/performance\_attribution/returns.py}
 
 % modules/performance_attribution/portfolio.py
+\subsubsection{Portfolio Construction}
 With returns being available for all assets and their benchmarks, the performance attribution module then constructs portfolios for each team. Each team will have created one portfolio allocation for each customer type that is enabled in the current period. The module will account for this by building as many portfolios per team as there are customer types.\footnote{See pfm-model/api/modules/performance\_attribution/portfolio.py}
 
 In addition to building portfolios for all depot allocations of the current period, the performance attribution module also computes one benchmark portfolio for each asset portfolio. These benchmark portfolios are based on the strategic asset allocation of the corresponding customer type. As the strategic asset allocation is defined once per game during period zero, the composition of these benchmark portfolios will stay the same. Only their returns will change, as the time-frame played changes with each period.
 
 % modules/performance_attribution/returns.py
+\subsubsection{Portfolio Returns}
 Once portfolios are built for each combination of teams and active customer types, returns need to be calculated in the same way that returns were calculated for the assets previously. However, these returns need to be additionaly weighted by the amount of money that has been invested into each asset. For example, if a team were to invest 10\% of their total assets under management in one asset and 20\% in another, the latter would influence the overall portfolio returns twice as much as the former.
 
 % modules/performance_attribution/kpi.py
+\subsubsection{Performance Measures}
 Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easier intercomparison between teams. A byproduct of these calculations is also the new assets under management for a customer given their portfolio returns, as well as the new asset positions that a portfolio is composed of after returns are applied.For example, if one invested 50\% in one asset and 50\% in another, the new positions after returns might be 45\%-55\% if the latter asset outperforms the former.\footnote{See pfm-model/api/modules/performance\_attribution/kpi.py}
 
 % TODO: measure list in appendix
@@ -58,10 +63,53 @@ The final results of the performance attribution module are compiled into a suit
 
 
 \subsection{Market Model}
-The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams and performs several grading procedures based on all of these data. The final output of the module are several index values that, e.g., describe the employee satisfaction on a score from 1 to 10.
+The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams and performs several grading procedures based on all of these data. The final output of the module are several index values that, e.g., describe the employee satisfaction on a score from 0 to 10.
 
-% modules/market_model/index_returns.py
-As the market model is comprised of quite a lot of calculation steps, we will not go deeply into every single one of them. Instead, table x shows
+As the market model is comprised of quite a lot of calculation steps and formulas, we will not go deeply into any technical specifics. Instead, we briefly describe the overall structure of the module and its main subcomponents as well as how the underlying effective curves (i.e., formulas) can be paramterized.
+
+\subsubsection{Effective Curves}
+To facilitate the grading of arbitrary values on a scale of zero to ten and allow for additional parametrization, formulas that we call effective curves are applied. These formulas most often follow the general schema of computing the market average and, based on a comparison with specific portfolio-related values (\(\Delta = value - value_{avg}\)), calculating a positive or negative deviation from a base value (e.g., \(5 + \Delta \)).
+
+An simple example for an effective curve could be:
+\[\text{index value} = 5 + \frac{\Delta}{20000}\]
+
+where the value would be constrained to lie in \([0, 10]\). More complex variants apply different functions based on the domain of the delta value. For example, the full returns index is computed as follows (if the delta value is positive):
+\[\text{returns index} = 5 + \log(1 + 10 * |(return - return_{avg}) * 100|)\]
+
+If the delta were negative, the result of the logarithm would simply be inverted to its negative value.
+
+\subsubsection{Overview of Computed Indices}
+\begin{table}[h!]
+  \begin{tabular}{lp{11cm}}
+    \toprule
+    Name & Inputs \\
+    \midrule
+    ix\_returns & Average weighted return over the previous 5 periods\\
+    \midrule
+    ix\_sharpe\_ratio & Sharpe ratio of portfolios \\
+    ix\_information\_ratio & Information ratio of portfolios \\
+    ix\_performance & ix\_sharpe\_ratio, ix\_information\_ratio \\
+    \midrule
+    ix\_salary & Yearly salary given to employees \\
+    ix\_education & Yearly days of education for each employee \\
+    ix\_employee\_satisfaction & ix\_salary, ix\_education, returns\_bonus \\
+    \midrule
+    ix\_employee\_education & Yearly days of education for each employee\\
+    ix\_technical\_equipment & Depreciations on IT infrastructure \\
+    ix\_service\_time & Customer service time available \\
+    ix\_service\_quality & ix\_employee\_education, ix\_service\_time, ix\_technical\_equipment \\
+    \midrule
+    ix\_fee\_structure & All-in management fee (previous, current, and delta) \\
+    \midrule
+    ix\_allocation\_coherence & Number of SAA violations and relative TAA discrepancy \\
+    \midrule
+    ix\_score & ix\_returns, ix\_performance, ix\_allocation\_coherence, ix\_fee\_structure, ix\_service\_quality \\
+    \bottomrule
+  \end{tabular}
+  \centering
+  \caption{Overview of all indices calculated in the market model module}
+  \label{table:market_model_indices}
+\end{table}
 
 
 \subsection{Business Model}
