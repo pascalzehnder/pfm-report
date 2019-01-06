@@ -63,9 +63,9 @@ The final results of the performance attribution module are compiled into a suit
 
 
 \subsection{Market Model}
-The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams and performs several grading procedures based on all of these data. The final output of the module are several index values that, e.g., describe the employee satisfaction on a score from 0 to 10.
+The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams and performs several grading procedures based on all of these data. The final output of the module are several index and subindex values that, e.g., describe the employee satisfaction or the overall team score on a range from 0 to 10.
 
-As the market model is comprised of quite a lot of calculation steps and formulas, we will not go deeply into any technical specifics. Instead, we briefly describe the overall structure of the module and its main subcomponents as well as how the underlying effective curves (i.e., formulas) can be paramterized.
+As the market model is comprised of quite a lot of calculation steps and formulas, we will not go deeply into technical specifics. Instead, we briefly describe the overall structure of the module and its main subcomponents as well as how the underlying effective curves (i.e., formulas) can be parametrized.
 
 \subsubsection{Effective Curves}
 To facilitate the grading of arbitrary values on a scale of zero to ten and allow for additional parametrization, formulas that we call effective curves are applied. These formulas most often follow the general schema of computing the market average and, based on a comparison with specific portfolio-related values (\(\Delta = value - value_{avg}\)), calculating a positive or negative deviation from a base value (e.g., \(5 + \Delta \)).
@@ -79,44 +79,48 @@ where the value would be constrained to lie in \([0, 10]\). More complex variant
 If the delta were negative, the result of the logarithm would simply be inverted to its negative value.
 
 \subsubsection{Overview of Computed Indices}
-\begin{table}[h!]
-  \begin{tabular}{lp{11cm}}
-    \toprule
-    Name & Inputs \\
-    \midrule
-    ix\_returns & Average weighted return over the previous 5 periods\\
-    \midrule
-    ix\_sharpe\_ratio & Sharpe ratio of portfolios \\
-    ix\_information\_ratio & Information ratio of portfolios \\
-    ix\_performance & ix\_sharpe\_ratio, ix\_information\_ratio \\
-    \midrule
-    ix\_salary & Yearly salary given to employees \\
-    ix\_education & Yearly days of education for each employee \\
-    ix\_employee\_satisfaction & ix\_salary, ix\_education, returns\_bonus \\
-    \midrule
-    ix\_employee\_education & Yearly days of education for each employee\\
-    ix\_technical\_equipment & Depreciations on IT infrastructure \\
-    ix\_service\_time & Customer service time available \\
-    ix\_service\_quality & ix\_employee\_education, ix\_service\_time, ix\_technical\_equipment \\
-    \midrule
-    ix\_fee\_structure & All-in management fee (previous, current, and delta) \\
-    \midrule
-    ix\_allocation\_coherence & Number of SAA violations and relative TAA discrepancy \\
-    \midrule
-    ix\_score & ix\_returns, ix\_performance, ix\_allocation\_coherence, ix\_fee\_structure, ix\_service\_quality \\
-    \bottomrule
-  \end{tabular}
-  \centering
-  \caption{Overview of all indices calculated in the market model module}
-  \label{table:market_model_indices}
-\end{table}
+The market model encompasses many calculations and intermediary values. \ref{fig:market_model_dependencies} shows the dependencies and interconnections between all these values, as well as how the final score index and number of customers are calculated.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{img/market_model_dependencies.png}
   \caption{Market Model Dependencies}
   \centering
-  \label{fig:market_model_overview}
+  \label{fig:market_model_dependencies}
 \end{figure}
+
+\begin{table}[h!]
+  \begin{tabular}{lp{11cm}}
+    \toprule
+    Name & Description \\
+    \midrule
+    ix\_returns & How portfolio returns compare against competitors \\
+    \midrule
+    ix\_sharpe\_ratio & How well the sharpe ratio compares against competitors \\
+    ix\_information\_ratio & How the information ratio compares against competitors \\
+    ix\_performance & Combination of performance indices \\
+    \midrule
+    ix\_salary & How satisfied employees are with their salary \\
+    ix\_education & How satisfied employees are with their education \\
+    ix\_employee\_satisfaction & How satisfied the employees are with overall working conditions \\
+    \midrule
+    ix\_employee\_education & How much employee education boosts efficiency \\
+    ix\_technical\_equipment & How appropriate the IT infrastructure is after depreciation  \\
+      ix\_service\_time & How appropriate the time spent for customer service is perceived \\
+    ix\_service\_quality & How well overall customer service is perceived \\
+    \midrule
+    ix\_fee\_structure & How well the all-in management fee is perceived \\
+    \midrule
+    ix\_allocation\_coherence & Number of SAA violations and relative TAA discrepancy \\
+    \midrule
+    ix\_score & Combination of all indices into an overall rating \\
+    \bottomrule
+  \end{tabular}
+  \centering
+  \caption{Description of all indices calculated in the market model module}
+  \label{table:market_model_indices}
+\end{table}
+
+
 
 
 \subsection{Business Model}
