@@ -1,26 +1,26 @@
 \section{Application Overview}
-For playing the game an administrator of a specified game and an infinite number of teams have to interact together for playing this simulation.
+For playing a game an administrator of a specified game and an infinite number of teams have to interact together and compete aginast each other.
 
 \subsection{Administration}
-All administrative tasks will be described in this part.
+All administrative tasks will be described in this part. An administrator may administrate multiple games in one account and the games could be played simultaneously.
 
 \subsubsection{Administrator login}
-An administrator needs to have a login for having all adminstrative functionalities. Therefore he has to provide his credentials on the following screen which he reach by following the instructions on the start page.
+An administrator needs to have a login for having all adminstrative functionalities. Therefore he has to provide his credentials on the following screen which he reaches by following the instructions on the start page.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/login.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/01_login.png}
 \end{center}
 
 \subsubsection{Game management}
 \paragraph{Game overview}
-As landing page of the administrator the game overview exists. It serves as the control center of the game adminstration.
+As landing page of the administrator the game overview exists. It serves as the control center of the game adminstration. Multiple games can be maintained simultaneously.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/game_overview.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/02_game_overview.png}
 \end{center}
 
 \paragraph{Game creation}
-For creating a game the administrator needs to define some parameters for playing a game which are structured into three tabs. By pressing on the ''next''-button the administrator will be leaded through the form. Some tooltips help users to understand the purpose of the provided input. After submitting the creation of the game, the user will be redirected to the game overview.
+For creating a game the administrator needs to define some parameters which are structured into three tabs. By pressing on the ''next''-button the administrator will be leaded through the form. Some tooltips help users to understand the purpose of the provided input. After submitting the creation of the game, the user will be redirected to the game detail of the selected game.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/game_creation.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/03_game_creation.png}
 \end{center}
 
 \paragraph{Game detail}
@@ -29,39 +29,43 @@ The game detail for each game may be accessed over the game overview list. In th
 \subparagraph{Game initialization}
 As the game creation may be done in advance we have splitten the game creation from the game initialization, such that last adjustments of the game may be done just before the start of the game.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/game_initialization.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/04_game_initialization.png}
 \end{center}
 
 \subparagraph{Game start}
 By starting the game the students or teams are finally able to start with their period 0 decisions. Administrators are able to give them some help over messages which will be visible for the teams in their report section.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/game_start.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/05_game_start.png}
 \end{center}
 
 \subparagraph{Team overview}
 For providing access for all teams an administrator has an overview about the team logins, which are generated automatically when initializing the game.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/team_login_overview.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/06_team_login_overview.png}
 \end{center}
 
 \subparagraph{Running game}
 Overview about the submission state of all teams. The administrator is able to get an insight about the decisions of all submitted teams. The period can only be finished if all teams submitted and therefore the state of the teams has been green.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/running_game.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/07_running_game.png}
 \end{center}
 
 \subparagraph{Initializing period}
 After completion of period zero the administrator has to initalize a period in which the team decisions will be compared to the other teams decisions and evaluated. Additionally new customer types for the next period and other settings could be defined in this phase of the game.
-% TODO replace with screen including customer type settings
+% TODO replace with screen including customer type settings from period 2 e.g.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/period_initialization.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/08_period_initialization.png}
 \end{center}
 
 \subparagraph{Period start}
 By completing the simulation, respectively evaluation of the previous period, a next period may be started. If the game is still paused the teams cannot access the decisions site. The administrator can define some optional messages which will be displayed in the teams report page. Some adjustments to the simulation results will be edited in this phase of the game.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/administrator/period_start.png}
+  \includegraphics[scale=0.2]{img/application-overview/administrator/09_period_start.png}
 \end{center}
+
+\subsubsection{Reports}
+For presentation of the teams result in between two running periods being played, a report is accessible for the administrator. A more detailed description will be in section X, as the teams access the same reports as the administrator.
+
 
 \subsubsection{Entities administration}
 
@@ -92,22 +96,20 @@ Short overview about all sectors which are used in the asset overview.
 
 
 
-
-
 \subsection{Team View}
 
 \subsubsection{Login}
+%\begin{center}
+%  \includegraphics[scale=0.2]{img/application-overview/teams/startpage.png}
+%\end{center}
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/teams/startpage.png}
-\end{center}
-\begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/teams/login.png}
+  \includegraphics[scale=0.2]{img/application-overview/teams/01_login.png}
 \end{center}
 
 \subsection{Period 0 decisions}
 In period 0 which represents phase 1 of the game, the teams define their SAA for all customer types which are enabled by the administrator of the specific game. The teams need to fullfill the ranges for all dimensions to submit their decisions. Supportive graphs in form of pie charts help the teams to decide about the share of the two dimensions. Additionaly the players can name their team on the top left corner of the screen.
 \begin{center}
-  \includegraphics[scale=0.2]{img/application-overview/teams/period_zero_decisions.png}
+  \includegraphics[scale=0.2]{img/application-overview/teams/02_period_zero_decisions.png}
 \end{center}
 
 \subsection{Other periods decisions}
