@@ -1,10 +1,10 @@
 \section{Market Model}
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{img/market_model.png}
-  \caption{Market Model Overview}
-  \centering
-  \label{fig:market_model_overview}
+    \includegraphics[width=\textwidth]{img/market_model.png}
+    \caption{Market Model Overview}
+    \centering
+    \label{fig:market_model_overview}
 \end{figure}
 
 The PFM-Game market model is a module that produces period results based on the business decisions and portfolio allocations of teams participating in a given game. During the execution of a game, the market model is executed once per period once the game master decides to complete a period and send a period scoring request. The market model is separated into several subcomponents that then, when applied in sequence, produce results for the given period of the game.
@@ -15,17 +15,17 @@ The underlying data driving all portfolio-related calculations in the market mod
 The above described data can be extracted from Datastream and FRED and ingested into an instance of InfluxDB automatically by means of a Python module that was created as an extension to the \textit{PFM-Simulation} project. Data to be ingested is defined inside an assets.csv file in the following CSV format:
 
 \begin{table}[h!]
-  \begin{tabular}{lllllll}
-    \toprule
-    Name & Symbol  & Start Date & Market      & Data Type & Asset Type & Currency \\
-    \midrule
-    SWISS BOND AAA & SWBND3A & 29.12.2006 & Switzerland & RI        & BONDS      & CHF      \\
-    NESTLE 'R'     & S:NESN  & 01.01.1973 & Switzerland & RI        & EQUITY     & CHF      \\
-    \bottomrule
-  \end{tabular}
-  \centering
-  \caption{Exemplary assets in a valid assets.csv definition format (optional columns omitted)}
-  \label{table:assets_csv}
+    \begin{tabular}{lllllll}
+        \toprule
+        Name           & Symbol  & Start Date & Market      & Data Type & Asset Type & Currency \\
+        \midrule
+        SWISS BOND AAA & SWBND3A & 29.12.2006 & Switzerland & RI        & BONDS      & CHF      \\
+        NESTLE 'R'     & S:NESN  & 01.01.1973 & Switzerland & RI        & EQUITY     & CHF      \\
+        \bottomrule
+    \end{tabular}
+    \centering
+    \caption{Exemplary assets in a valid assets.csv definition format (optional columns omitted)}
+    \label{table:assets_csv}
 \end{table}
 
 During processing of the CSV definition of all assets, the module will incrementally extend existing time-series with new data up to the current day. Time-series that were not previously available will be stored as a new series in full-length. As not all assets are available at all times, the game will dynamically decide about the assets to show as potential investments based on their availability and the historical dates of the period.
@@ -57,30 +57,30 @@ Once portfolios have been built for each combination of teams and active custome
 Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \cref{table:portfolio_measures} provides an overview over all of the measures made available by the performance attribution module.
 
 \begin{table}[h!]
-    \begin{tabular}{ll}
-      \toprule
-      Name & Description \\
-      \midrule
-      Variance     & The variance of portfolio returns \\
-      Standard Deviation     & The standard deviation of portfolio returns \\
-      Variance BM & The variance of a benchmark portfolio \\
-      Standard Deviation BM & The standard deviation of a benchmark portfolio \\
-      Beta & Systematic risk (volatility) of a portfolio compared to the overall market \\
-      Tracking Error     & Divergence between the price behavior of a portfolio and its benchmark \\
-      Sharpe Ratio     & Excess return per unit of total risk \\
-      Traynor Ratio     & Excess return per unit of systematic risk \\
-      Jensen's Alpha     & Difference between portfolio return and expected return according to the Capital Asset Pricing Model (CAPM) \\
-      Information Ratio     & Measures abnormal return that could be diversified away by holding an index portfolio \\
-      Selection Performance Attribution & Portfolio performance attributed to the individual investments \\
-      Tactical Performance Attribution & Portfolio performance attributed to the asset allocation (asset types and markets) \\
-      SAA Violations     & The number of times that an ideal SAA has been violated by a given portfolio \\
-      TAA Discrepancy     & The relative deviation of a given portfolio with respect to its corresponding TAA \\
-      \bottomrule
+    \begin{tabular}{lp{9cm}}
+        \toprule
+        Name                              & Description                                                                                                 \\
+        \midrule
+        Variance                          & The variance of portfolio returns                                                                           \\
+        Standard Deviation                & The standard deviation of portfolio returns                                                                 \\
+        Variance BM                       & The variance of a benchmark portfolio                                                                       \\
+        Standard Deviation BM             & The standard deviation of a benchmark portfolio                                                             \\
+        Beta                              & Systematic risk (volatility) of a portfolio compared to the overall market                                  \\
+        Tracking Error                    & Divergence between the price behavior of a portfolio and its benchmark                                      \\
+        Sharpe Ratio                      & Excess return per unit of total risk                                                                        \\
+        Traynor Ratio                     & Excess return per unit of systematic risk                                                                   \\
+        Jensen's Alpha                    & Difference between portfolio return and expected return according to the Capital Asset Pricing Model (CAPM) \\
+        Information Ratio                 & Measures abnormal return that could be diversified away by holding an index portfolio                       \\
+        Selection Performance Attribution & Portfolio performance attributed to the individual investments                                              \\
+        Tactical Performance Attribution  & Portfolio performance attributed to the asset allocation (asset types and markets)                          \\
+        SAA Violations                    & The number of times that an ideal SAA has been violated by a given portfolio                                \\
+        TAA Discrepancy                   & The relative deviation of a given portfolio with respect to its corresponding TAA                           \\
+        \bottomrule
     \end{tabular}
     \centering
     \caption{Portfolio measures as calculated in the performance attribution module.}
     \label{table:portfolio_measures}
-  \end{table}
+\end{table}
 
 A byproduct of these calculations are the new assets under management for a customer given their portfolio returns, as well as the new asset positions that a portfolio is composed of after application of returns. For example, if one team invested 50\% in one asset and 50\% in another, the new positions after returns might be 45\%-55\% if the latter asset outperforms the former.\footnote{See pfm-model/api/modules/performance\_attribution/kpi.py}
 
@@ -105,7 +105,7 @@ where the value would be constrained to lie within \([0, 10]\). More complex var
 If the delta were negative, the result of the logarithm would simply be inverted to its negative value.
 
 \paragraph{Parametrization}
-To allow for easy parametrization of the effective curves, they have been extracted into a single file as lambda functions. An example for such a function is the salary index that takes in a list of salaries and computes the salary index for each one of them:
+To allow for easy parametrization of the effective curves, they have been extracted into a single file as lambda functions.\footnote{See pfm-model/api/modules/market\_model/effective\_curves.py} An example for such a function is the salary index as shown in \cref{}. The salary index takes a list of salaries and computes an index for each team (within \([0, 10]\)).
 
 \begin{listing}[h!]
     \begin{minted}{python}
@@ -118,50 +118,50 @@ To allow for easy parametrization of the effective curves, they have been extrac
 \end{listing}
 
 \subsubsection{Overview of Market Model Indices}
-The market model encompasses many calculations and intermediary values. \cref{fig:market_model_dependencies} shows the dependencies and interconnections between all these values, as well as how the final score index and number of customers are calculated. \cref{table:market_model_indices} shortly describes each major index and its significance.
+The market model encompasses many effective curves and intermediary values. Many of these values are highly dependent on other previously calculated values. \Cref{fig:market_model_dependencies} shows the dependencies and interconnections between all the major input values in the market model, as well as how the final score index and number of customers are calculated from these input values. \Cref{table:market_model_indices} shortly describes each major index and its significance.
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{img/market_model_dependencies.png}
-  \caption{Market Model Dependencies}
-  \centering
-  \label{fig:market_model_dependencies}
+    \includegraphics[width=\textwidth]{img/market_model_dependencies.png}
+    \caption{Overview of market model dependencies; resolved from top-to-bottom with computed values in bold}
+    \centering
+    \label{fig:market_model_dependencies}
 \end{figure}
 
 \begin{table}[h!]
-  \begin{tabular}{lp{11cm}}
-    \toprule
-    Name & Description \\
-    \midrule
-    ix\_returns & How portfolio returns compare against competitors \\
-    \midrule
-    ix\_sharpe\_ratio & How well the sharpe ratio compares against competitors \\
-    ix\_information\_ratio & How the information ratio compares against competitors \\
-    ix\_performance & Combination of performance indices \\
-    \midrule
-    ix\_salary & How satisfied employees are with their salary \\
-    ix\_education & How satisfied employees are with their education \\
-    ix\_employee\_satisfaction & How satisfied the employees are with overall working conditions \\
-    \midrule
-    ix\_employee\_education & How much employee education boosts efficiency \\
-    ix\_technical\_equipment & How appropriate the IT infrastructure is after depreciation  \\
-      ix\_service\_time & How appropriate the time spent for customer service is perceived \\
-    ix\_service\_quality & How well overall customer service is perceived \\
-    \midrule
-    ix\_fee\_structure & How well the all-in management fee is perceived \\
-    \midrule
-    ix\_allocation\_coherence & Number of SAA violations and relative TAA discrepancy \\
-    \midrule
-    ix\_score & Combination of all indices into an overall rating \\
-    \bottomrule
-  \end{tabular}
-  \centering
-  \caption{Description of all indices calculated in the market model module}
-  \label{table:market_model_indices}
+    \begin{tabular}{lp{11cm}}
+        \toprule
+        Name                       & Description                                                      \\
+        \midrule
+        ix\_returns                & How portfolio returns compare against competitors                \\
+        \midrule
+        ix\_sharpe\_ratio          & How well the sharpe ratio compares against competitors           \\
+        ix\_information\_ratio     & How the information ratio compares against competitors           \\
+        ix\_performance            & Combination of performance indices                               \\
+        \midrule
+        ix\_salary                 & How satisfied employees are with their salary                    \\
+        ix\_education              & How satisfied employees are with their education                 \\
+        ix\_employee\_satisfaction & How satisfied the employees are with overall working conditions  \\
+        \midrule
+        ix\_employee\_education    & How much employee education boosts efficiency                    \\
+        ix\_technical\_equipment   & How appropriate the IT infrastructure is after depreciation      \\
+        ix\_service\_time          & How appropriate the time spent for customer service is perceived \\
+        ix\_service\_quality       & How well overall customer service is perceived                   \\
+        \midrule
+        ix\_fee\_structure         & How well the all-in management fee is perceived                  \\
+        \midrule
+        ix\_allocation\_coherence  & Number of SAA violations and relative TAA discrepancy            \\
+        \midrule
+        ix\_score                  & Combination of all indices into an overall rating                \\
+        \bottomrule
+    \end{tabular}
+    \centering
+    \caption{Description of all major indices calculated in the market model module}
+    \label{table:market_model_indices}
 \end{table}
 
 
 \subsubsection{Major Outputs}
-Next to the score index encoding the overall satisfaction of customers with a team's bank, it further enables the calculation of customer flows in between teams. Successful teams will earn the customers that other teams lose. The final customer count adjusted by growth will allow for further model calculations regarding overall business income.
+Next to the score index encoding the overall satisfaction of customers with a team's management decisions, it further enables the calculation of customer flows in between teams. Highly scoring, successful teams will earn customers that other teams will lose. The final customer count adjusted by growth is one of the most important outputs of the market model, as it will allow for further model calculations regarding the overall state of the business.
 
 
 \subsection{Business Model}
