@@ -1,12 +1,12 @@
 \section{Architecture}
 \label{sec:architecture}
 
-Providing a state-of-the-art architecture and setup is one of the main goals of the new portfolio management game project. As a general direction, moving to a web-based application was defined early on as a replacement for the previous decentral solution. This section is thought to provide a sufficiently technical but still abstract overview of the application architecture, providing further references where necessary.
+Providing a state-of-the-art architecture and setup is one of the main goals of the new pfm-game project. As a general direction, moving to a web-based application was defined early on as a replacement for the previous decentral solution. This section is thought to provide a sufficiently technical but still abstract overview of the application architecture, providing further references where necessary.
 
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.45]{img/architecture.png}
-  \caption{PFM game architecture}
+  \caption{Proposed pfm-game architecture}
 \end{figure}
 
 
@@ -31,7 +31,6 @@ If we wanted to request a list of users from our GraphQL API, we could make an e
   \begin{lstlisting}[caption=GraphQL request, label=lst:graphql_request]
 query {
   users {
-    id
     email
     username
   }

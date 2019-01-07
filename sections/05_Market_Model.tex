@@ -8,7 +8,7 @@
     \label{fig:market_model_overview}
 \end{figure}
 
-The PFM-Game market model is a module that produces period results based on the business decisions and portfolio allocations of teams participating in a given game. During the execution of a game, the market model is executed once per period once the game master decides to complete a period and send a period scoring request. The market model is separated into several subcomponents that, when applied in sequence, produce results for the given period of the game as presented in \Cref{fig:market_model_overview}.
+The pfm-game market model is a module that produces period results based on the business decisions and portfolio allocations of teams participating in a given game. During the execution of a game, the market model is executed once per period once the game master decides to complete a period and send a period scoring request. The market model is separated into several subcomponents that, when applied in sequence, produce results for the given period of the game as presented in \Cref{fig:market_model_overview}.
 
 \subsection{Data and Data Ingestion}
 The underlying data driving all portfolio-related calculations in the market model is comprised of several hundred time-series that are stored in InfluxDB, a database specialized in time-series management. The majority of these time-series describe asset prices or return indices (i.e., asset prices normalized by the payment of dividends and other interest) as extracted from the Thomson Reuters Datastream platform. Further relevant time-series are based on macroeconomic data extracted from the FRED (Federal Reserve Economic Data) database. These data are used to calculate portfolio and benchmark returns as well as parameters of an economic forecast.\\
@@ -58,14 +58,14 @@ Once portfolios have been built for each combination of teams and active custome
 Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \Cref{table:portfolio_measures} provides an overview of all of the measures made available by the performance attribution module.
 
 \begin{table}[h!]
-    \begin{tabular}{lp{9cm}}
+    \begin{tabular}{lp{8cm}}
         \toprule
         Name                              & Description                                                                                                 \\
         \midrule
         Variance                          & The variance of portfolio returns                                                                           \\
         Standard Deviation                & The standard deviation of portfolio returns                                                                 \\
-        Variance BM                       & The variance of a benchmark portfolio                                                                       \\
-        Standard Deviation BM             & The standard deviation of a benchmark portfolio                                                             \\
+        Variance Benchmark                       & The variance of a benchmark portfolio                                                                       \\
+        Standard Deviation Benchmark             & The standard deviation of a benchmark portfolio                                                             \\
         Beta                              & Systematic risk (volatility) of a portfolio compared to the overall market                                  \\
         Tracking Error                    & Divergence between the price behavior of a portfolio and its benchmark                                      \\
         Sharpe Ratio                      & Excess return per unit of total risk                                                                        \\
@@ -123,7 +123,7 @@ The market model encompasses many effective curves and intermediary values. Many
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]{img/market_model_dependencies.png}
-    \caption{Overview of market model dependencies; resolved from top-to-bottom with computed values in bold}
+    \caption{Overview of market model dependencies; resolved from top-to-bottom with computed values in bold; large-scale depiction can be found in the appendix}
     \centering
     \label{fig:market_model_dependencies}
 \end{figure}
