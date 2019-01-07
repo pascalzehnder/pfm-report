@@ -1,17 +1,16 @@
 \section{Conclusion}
+Over the course of this master project, we have managed to set up an initial game that is fully executable against a first iteration of data in an already full-scale time-series database that can handle many more time-series than are currently present. The application contains the most critical administrator features as well as all practical steps that should be present in a structured investment process as depicted in \Cref{fig:investment_process}. \\
 
-\subsection{Current Progress}
+The application is deployed to an environment that is ready to host a productive instance as soon as required (a productive Kubernetes cluster). The API and model are validated against an exhaustive integration test suite that ensures that no broken backend services can be deployed to a production environment. \\
 
-...
+As not enough data for a simulated game could be provided, the efforts were focused on developing a game that can be played with historical data. However, the game is easily extendable for the purpose of simulation. Once the simulation feature is implemented, the administrator will be able to choose a game type (either historical or bootstrapped) when creating a new game. Additional inputs in the game initialization screen will allow the game master to parametrize the simulation, while additional outputs on the following start period screen will allow an initial verification of the simulated data. \\
 
-\subsection{Future Development}
+Next to providing a strong foundation for design and development in this project, the observations and interviews and the generally structured approach to design have in summary established an improved understanding of the requirements and how a simulation game should be approached. This will provide great value for the future development of the game, as the models and requirements created in the course of this project can be further used, refined and validated. \\
 
-...
+The supervisors from the Department of Banking and Finance are already planning to continue the project with further development in the near future. This project and the herein established baseline understanding have led to many new features and improvements being ideated, many of which were out of the scope of this project but are planned to be implemented afterward. A nonexhaustive list of these features can be found in xxx for future reference. Additionally, user stories that have been planned for future development are included in the listing of user stories for this project (see \Cref{sec:appendix_user_stories}). \\
 
-In the scope of the Master project, the project team has set up an initial game which is executable and testable for various settings including multiple teams per game and the most important administrator features. As the project was accompanied by a project planning tool called ''Trello'', there have been a lot of future tasks which may be implemented in the future but weren't planned within the scope of this Master project. The most epic features will be described in the following paragraph. \\
+\begin{itemize}
+  \item ...
+\end{itemize}
 
-As not enough data for a bootstrapped game was provided, the authors focused on developing a game which will be played with historical data. The game is easily extendable for this purpose, as the initial plan was to set up both modes. The authors had to revise this plan due to the lack of provided data. When creating a game the administrator can choose the game type which is either a bootstrapped or a historical game. \\
-
-% TODO more epic feature improvements
-
-The project's plan is being ready for a first real game-execution by the Executive education's final seminar which will be held in July 2019. Additionally to the current courses where the application was used (as described in a previous chapter), the Department of Banking and Finance plans to set up another execution for the assessment course ''Banking and Finance II'', in which 700 students would participate in. The effort of setting this up for such a large number of students would need a lot of stress testing for the application.
+The first chance of the new game to be played in a productive fashion could be during the executive education's final seminar in Summer 2019, which we were already able to attend in Summer 2018 for our first observation purposes. In addition to this seminar and the master level seminar each fall, the DBF team are also already ideating an execution in an assessment level course like ``Banking and Finance II''.
