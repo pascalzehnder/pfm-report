@@ -8,12 +8,12 @@
     \label{fig:market_model_overview}
 \end{figure}
 
-The PFM-Game market model is a module that produces period results based on the business decisions and portfolio allocations of teams participating in a given game. During the execution of a game, the market model is executed once per period once the game master decides to complete a period and send a period scoring request. The market model is separated into several subcomponents that, when applied in sequence, produce results for the given period of the game.
+The PFM-Game market model is a module that produces period results based on the business decisions and portfolio allocations of teams participating in a given game. During the execution of a game, the market model is executed once per period once the game master decides to complete a period and send a period scoring request. The market model is separated into several subcomponents that, when applied in sequence, produce results for the given period of the game as presented in \Cref{fig:market_model_overview}.
 
 \subsection{Data and Data Ingestion}
-The underlying data driving all portfolio-related calculations in the market model is comprised of several hundred time-series that are stored in InfluxDB, a database specialized in time-series management. The majority of these time-series describe asset price or return indices (i.e., asset prices normalized by the payment of dividends and other interest) as extracted from the Thomson Reuters Datastream platform. Further relevant time-series are based on macroeconomic data extracted from the FRED (Federal Reserve Economic Data) database. These data are used to calculate portfolio and benchmark returns as well as parameters of an economic forecast.
+The underlying data driving all portfolio-related calculations in the market model is comprised of several hundred time-series that are stored in InfluxDB, a database specialized in time-series management. The majority of these time-series describe asset prices or return indices (i.e., asset prices normalized by the payment of dividends and other interest) as extracted from the Thomson Reuters Datastream platform. Further relevant time-series are based on macroeconomic data extracted from the FRED (Federal Reserve Economic Data) database. These data are used to calculate portfolio and benchmark returns as well as parameters of an economic forecast.\\
 
-The above-described data can be extracted from Datastream and FRED and ingested into an instance of InfluxDB automatically by means of a Python module that was created as an extension to the \textit{PFM-Simulation} project. Data to be ingested is defined inside an assets.csv file in the following CSV format:
+The above-described data can be extracted from Datastream and FRED and ingested into an instance of InfluxDB automatically by means of a Python module that was created as an extension to the \textit{PFM-Simulation} project. Data to be ingested is defined inside an assets.csv file in the following CSV format, described in \Cref{table:assets_csv}.\\
 
 \begin{table}[h!]
     \begin{tabular}{lllllll}
@@ -37,7 +37,7 @@ The performance attribution module is the first module in the sequence of model 
 
 % modules/performance_attribution/influx.py
 \subsubsection{InfluxDB Querying}
-As can be seen in \cref{fig:market_model_overview}, one of the most important responsibilities of the performance attribution module is handling all data querying from the InfluxDB time-series database. Based on the incoming depot allocations of teams that participate in a game, the module fetches all necessary asset and benchmark series from the database. \footnote{See pfm-model/api/modules/performance\_attribution/influx.py}
+As can be seen in \Cref{fig:market_model_overview}, one of the most important responsibilities of the performance attribution module is handling all data querying from the InfluxDB time-series database. Based on the incoming depot allocations of teams that participate in a game, the module fetches all necessary asset and benchmark series from the database.\footnote{See pfm-model/api/modules/performance\_attribution/influx.py}
 
 % modules/performance_attribution/returns.py
 \subsubsection{Asset \& Benchmark Returns}
@@ -45,7 +45,7 @@ To be able to continue with portfolio construction further in the sequence, all 
 
 % modules/performance_attribution/portfolio.py
 \subsubsection{Portfolio Construction}
-With returns being available for all assets and their corresponding benchmarks, the performance attribution module then constructs portfolios for each team. Each team will have created one portfolio allocation for each customer type that is enabled for a specific period. The module will account for this by constructing as many portfolios per team as there are customer types.\footnote{See pfm-model/api/modules/performance\_attribution/portfolio.py}
+With returns being available for all assets and their corresponding benchmarks, the performance attribution module then constructs portfolios for each team. Each team will have created one portfolio allocation for each customer type that is enabled for a specific period. The module will account for this by constructing as many portfolios per team as there are customer types.\footnote{See pfm-model/api/modules/performance\_attribution/portfolio.py}\\
 
 In addition to building portfolios for all depot allocations of the current period, the performance attribution module also computes a benchmark portfolio for each asset portfolio. These benchmark portfolios are based on the strategic asset allocation of the corresponding team and customer type. As the strategic asset allocation is defined once per game (during period zero), the composition (but not the returns) of these benchmark portfolios stays the same over the course of the entire game.
 
@@ -55,7 +55,7 @@ Once portfolios have been built for each combination of teams and active custome
 
 % modules/performance_attribution/kpi.py
 \subsubsection{Performance Measures}
-Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \cref{table:portfolio_measures} provides an overview of all of the measures made available by the performance attribution module.
+Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \Cref{table:portfolio_measures} provides an overview of all of the measures made available by the performance attribution module.
 
 \begin{table}[h!]
     \begin{tabular}{lp{9cm}}
@@ -90,7 +90,7 @@ The results of the performance attribution module are then compiled into a suita
 
 
 \subsection{Market Model}
-The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams for the current period and performs several grading procedures based on all of these data. The final output of the module consists of several index and subindex values that, e.g., describe the employee satisfaction on a range from 0 to 10. The market model module is based on the Excel formulation created by the DBF and was extended by the ability to handle multiple customer types as well as integration with the other modules.
+The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams for the current period and performs several grading procedures based on all of these data. The final output of the module consists of several index and subindex values that, e.g., describe the employee satisfaction on a range from 0 to 10. The market model module is based on the Excel formulation created by the DBF and was extended by the ability to handle multiple customer types as well as integration with the other modules.\\
 
 As the market model is comprised of many individual calculation steps and formulas, we will not go deeply into technical specifics of single formulas. Instead, we focus on the overall structure of the module and its main subcomponents as well as how the underlying effective curves (i.e., formulas) can be parametrized and fine-tuned.
 
@@ -168,20 +168,20 @@ Next to the score index encoding the overall satisfaction of customers with a te
 \subsection{Business Model}
 As the third and final module in the chain, the business model is responsible for all calculations relating to the overall success of a team's banking institution. It calculates a complete income statement with operating returns and expenses as well as equity, dividends, and a final stock price. Next to the number of customers and score index, the stock price serves as another measurement of the overall score of a team's bank.\footnote{See pfm-model/modules/api/business\_model/effective\_curves.py for an overview of all effective curves}
 
-\subsubsection{Gross Income}
-The gross income of a company includes all revenue earned by goods and services sold. Applied to the scenario of a bank in our game, the gross income can be calculated from the number of customers, assets per customer, and the fee charged for managing said assets. In the case of multiple customer types, the gross income is the sum of all the fees for each separate type.
+\paragraph{Gross Income}
+The gross income of a company includes all revenue earned by goods and services sold. Applied to the scenario of a bank in our game, the gross income can be calculated from the number of customers, assets per customer, and the fee charged for managing said assets. In the case of multiple customer types, the gross income is the sum of all fees for each separate type.
 
-\subsubsection{Personnel Spending}
+\paragraph{Personnel Spending}
 Personnel spending is based on the number of employees and computed by combination with additional factors like salary and social expenses, education days per employee, and staffing decisions (hire/fire and temporary staff).
 
-\subsubsection{Trading Cost}
+\paragraph{Trading Cost}
 The trading cost of a bank is comprised of a fixed trading cost based on the number of employees as well as a variable trading cost that varies with the number of transactions made by a bank. A transaction is defined as a single change in an investment position, e.g., a change from a 10\% investment to a 20\% investment.
 
-\subsubsection{Infrastructure Cost}
+\paragraph{Infrastructure Cost}
 A bank's infrastructure cost has two subcomponents: the cost of a workspace needed for each employee and the cost of depreciation on technical investments of previous periods. The value of technical investments before depreciation is a combination of the previous value after depreciation and the current investments into technical infrastructure.
 
-\subsubsection{Operating Income and Equity}
+\paragraph{Operating Income and Equity}
 The equity of a bank is calculated from the operating income (gross income minus all spending) and the equity of the previous period. Based on the payout ratio as defined by the team, dividends are paid to the bank's shareholders and subtracted from the equity. This equity after dividends will be used as an initial value for the computations in the next period.
 
-\subsubsection{Stock Price}
+\paragraph{Stock Price}
 As a final measure, the stock price of a bank measures the confidence of shareholders in the current future success of the bank. The calculation is based on the valuation of all portfolios managed by a bank as well as the valuation of the overall income, equity, and dividends, and the corresponding deltas from the previous period.
