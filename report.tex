@@ -9,6 +9,9 @@
 \usepackage{fancyhdr, graphicx, amsmath, hyperref, longtable, float, enumitem, blindtext}
 \usepackage{booktabs}
 \usepackage{cleveref}
+\usepackage{multicol}
+\usepackage{listings}
+
 % For Bibliography
 \usepackage{natbib}
 \bibliographystyle{authordate1}
@@ -33,6 +36,17 @@
 	filecolor=black,
 	linkcolor=black,
 	urlcolor=black
+}
+
+\lstset{%
+    float=hbp,%
+    basicstyle=\ttfamily\small, %
+    columns=flexible, %
+    tabsize=2, %
+    frame=none, %
+    breaklines=true, %
+    breakautoindent=true, %
+    captionpos=b%
 }
 
 \renewcommand{\baselinestretch}{1.2}

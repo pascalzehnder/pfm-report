@@ -1,5 +1,5 @@
 \section{Architecture}
-To provide a contemporary setup for the decentral and web-based game we have chosen a architecture which will be described in this section.
+Providing a state-of-the-art architecture and setup is one of the main goals of the new portfolio management game project. As a general direction, moving to a web-based application was defined early on.
 
 \begin{figure}[h!]
   \centering
@@ -8,45 +8,92 @@ To provide a contemporary setup for the decentral and web-based game we have cho
 \end{figure}
 
 
-\subsection{Frontend}
-\begin{itemize}
-  \item Frontend structured as a single-page web application
-  \subitem Contrary to native windows application of old game
-  \item Allows for effortless setup and requires no manual data transfer
-  \subitem Based on the ReactJS and NextJS Javascript Frameworks
-\end{itemize}
+\subsection{Frontend (pfm-react)}
+
+Repository: https://git.ibf-devops.ch/wb/pfm-game/pfm-react
+
+The application frontend is structured as a single-page application for use in web browsers. Contrary to the native Windows application of the old game, this allows for effortless setup and resolves many problems with manual data transfer (either via USB for game data or on paper for reporting). The single-page app paradigm has become more and more popular with frameworks like React, Angular, and Vue being used by millions of people. As such, our implementation of the game is based on the latest versions of the ReactJS and NextJS framework.\footnote{See https://reactjs.org/ and https://nextjs.org/}
+
 
 \subsection{GraphQL}
-\begin{itemize}
-  \item Declarative data fetching
-  \subitem Code snippet (request and response)
-  \subitem Backbone for all networking between all application services (except model)
-\end{itemize}
 
-\subsection{API / Prisma}
-\begin{itemize}
-  \item NodeJS backend that serves a single GraphQL API endpoint
-  \item Handles authentication and authorization as well as all communications with the model endpoint
-  \item Talks to the prisma database access layer for data persistence
-\end{itemize}
+Traditional web applications have been using the RESTful paradigm for a long time. In a RESTful application, different types of entities are accessible on different endpoints and using different methods. For example, a GET request on a /customers endpoint could return a list of all customers.
 
-\subsection{Model}
-All calculations of the simulation are performed in a python-model which interacts with the time series data stored on an InfluxDB. A Restful service fetches the data from the model.
+Contrary to this, GraphQL is a new way of fetching data in a declarative fashion. The project has been initially developed at Facebook, was open-sourced in 2015, and has become widely used since that time. The key concept, declarative data fetching, can be summarized as an API response having the same structure as the corresponding request. Additionally, all communication using GraphQL is bound to a single endpoint, as the response depends solely on the content of the request. \footnote{See https://graphql.org/}
 
-\begin{itemize}
-  \item Python market and business model (as described in chapter 5)
-  \subitem Raw logic and calculations as given by several excel files
-  \item Publishes a REST API based on the Falcon framework that can be accessed for different use cases like:
-  \subitem Fetching a list of available assets for a certain time period
-  \subitem Computing the team scores and results given their decisions and a time period
-\end{itemize}
+If we wanted to request a list of users from our GraphQL API, we could make an exemplary request as can be seen in \cref{lst:graphql_request}. The corresponding example response is shown in \cref{lst:graphql_response}.
 
-\subsection{Simulation}
-\begin{itemize}
-  \item Python service that handles time series hydration from the Datastream API as well as sector portfolio construction and new period simulations
-  \item Main codebase was constructed by another student during his master thesis on time series simulation. We extended it with an API and additional functionality for the purposes of the game, as well as a more efficient replacement for the data hydration part. The simulation was specifically constructed for the purposes of this game and is planned to be integrated deeply into the portfolio game.
-  \item We also handle the infrastructure setup and deployment procedures (''DevOps'') as part of our collaboration.
-  \item As this part is described in the thesis of the respective student, we do not go into any further detail regarding his part.
-\end{itemize}
+\begin{multicols}{2}
+  \begin{lstlisting}[caption=GraphQL request, label=lst:graphql_request]
+query {
+  users {
+    id
+    email
+    username
+  }
+}
+  \end{lstlisting}
+  \vfill
+  \columnbreak
+  \begin{lstlisting}[caption=GraphQL response, label=lst:graphql_response]
+{
+  users [
+    {
+      id: 0,
+      email: "rolandschlaefli@gmail.com",
+      username: "roland"
+    },
+    {
+      id: 1,
+      email: "pascal_zehnder@outlook.com",
+      username: "pascal"
+    }
+  ]
+}
+  \end{lstlisting}
+\end{multicols}
 
-\subsection{Continious development}
+This new approach to data fetching allows us to fetch data directly where it is needed. For example, specific details regarding a user might be fetched only when a form is shown to edit these data. Furthermore, as requests using GraphQL only contain the fields that were actually requested (and not every field available), the data fetching consumes fewer resources.
+
+
+\subsection{API (pfm-api)}
+
+Repository: https://git.ibf-devops.ch/wb/pfm-game/pfm-api
+
+Any application wanting to consume API data using GraphQL needs a special endpoint that supports the format. As such, our application backend has to support GraphQL as its main communication language. There are some popular server-side frameworks for this case, including an official reference implementation maintained by Facebook. A combination of a NodeJS server integrated with the Apollo Server framework serves as a good basis for our GraphQL endpoint.\footnote{See https://nodejs.org/en/ and https://www.apollographql.com/docs/apollo-server/}
+
+The core responsibilities of the API are handling the authentication and authorization of requests, structuring the main business logic into services, handling all communications with the market model, as well as managing the Prisma database access layer for data persistence.
+
+
+\subsection{Prisma}
+
+Repository: https://git.ibf-devops.ch/wb/pfm-game/pfm-api
+
+The Prisma database access layer is a middleware that sits in between the API and a Postgres database. The Prisma instance provides a single GraphQL endpoint with which database entities can be created, deleted, updated, or read. Additionally, Prisma handles everything related to database management, including schema creation, migrations, and maintenance. The underlying database schema is defined using a GraphQL schema language, using which types and relations can be modeled.\footnote{See https://www.prisma.io/}
+
+
+\subsection{Model (pfm-model)}
+
+Repository: https://git.ibf-devops.ch/wb/pfm-game/pfm-model
+
+While the API provides services for all the persistence and input related logic, the model is responsible for everything related to the actual calculations and computations for the game. This includes everything from extracting available assets from the InfluxDB time-series database to scoring teams based on many input parameters.
+
+The model is structured into several Python modules that can be accessed by the API using specialized REST endpoints. The model is not connected to the main application database and performs all of its calculations in a stateless manner (except that it fetches historical asset data from the specialized InfluxDB instance). This allows for keeping the API logic at a bare minimum, moving most of the logic into the modules.\footnote{See https://falconframework.org/}
+
+
+\subsection{Simulation (pfm-model)}
+
+Repository: https://git.ibf-devops.ch/wb/pfm-game/pfm-model
+
+The portfolio management simulation project is a project that was taken on during the course of a Master thesis at the Department of Banking and Finance. Even though the simulation was executed as a separate project, the project goals are tightly coupled: the results of the simulation project are planned to be integrated into the game application in the near future.
+
+With said integration, it would be possible to pseudo-randomly generate new asset time-series with which a game could be played, instead of basing the entire game on historical data. By tuning some parameters, game masters could then influence the generation of said time-series to e.g. simulate a period of recession.
+
+The simulation project is structured as a collection of Python modules that incrementally build from raw asset data, over sector portfolio generation, and up to simulated asset time-series. Due to the coupling of the project, we provided support for the deployment and infrastructure setup and developed a Python REST API for the project. Additionally, some parts of the InfluxDB data hydration scripts had to be reimplemented due to inefficiencies and incompatibilities.
+
+Further details are described in the thesis related to the simulation project. As such, we do not describe any further details here.
+
+
+\subsection{Continuous Integration}
+
+To support development efforts over the course of the pfm-game project, a key factor has been the setup of a successful continuous integration (CI) pipeline at the beginning of the project. Due to previous positive experiences with CI and other DevOps paradigms, we decided that each subproject should be continuously integrated and published as a Docker container.
