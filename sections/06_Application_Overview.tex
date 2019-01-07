@@ -45,7 +45,7 @@ As the game creation may be done in advance we have split the game creation from
 \end{figure}
 
 \subparagraph{Game start}
-By starting the game the students or teams are finally able to start with their period zero decisions. Administrators are able to give their particpants some help over messages which will be visible for the teams in their report section by creating customizable messages. Figure~\ref{fig:game_start} shows a game which is still planned and may be started next.
+By starting the game the students or teams are finally able to start with their period zero decisions. Administrators are able to give their participants some help over messages which will be visible for the teams in their report section by creating customizable messages. Figure~\ref{fig:game_start} shows a game which is still planned and may be started next.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/05_game_start.png}
@@ -74,7 +74,7 @@ Overview of the submission state of all teams while a game is running (figure~\r
 \end{figure}
 
 \subparagraph{Initializing period}
-After completing period zero, the administrator has to initialize a period in which the team decisions will be compared to the other team decisions and evaluated. Additionally, new customer types for the next period and other settings could be defined in this phase of the game. New customer types may be added for the next period, but all existing ones are non deletable. A new customer type has an initial number of customers as defined in the game creation form.
+After completing period zero, the administrator has to initialize a period in which the team decisions will be compared to the other team decisions and evaluated. Additionally, new customer types for the next period and other settings could be defined in this phase of the game. New customer types may be added for the next period, but all existing ones are not deletable. A new customer type has an initial number of customers as defined in the game creation form.
 % TODO replace with a screen including customer type settings from period 2 e.g.
 \begin{figure}[h!]
   \centering
@@ -92,13 +92,13 @@ By completing the simulation, respectively evaluation of the previous period, a 
 \end{figure}
 
 \subsubsection{Reports}
-For the presentation of the team results in between two running periods being played, a report is accessible for the administrator. A more detailed description will be in section~\ref{subsec:reports}, as the teams accesses the same reports as the administrator of that running game.
+For the presentation of the team results in between two running periods being played, a report is accessible for the administrator. A more detailed description will be in section~\ref{subsec:reports}, as the teams access the same reports as the administrator of that running game.
 
 
 \subsubsection{Entities administration}
 
 \paragraph{Assets}
-All assets are visible within this page which are available for all game master, as visible in figure~\ref{fig:assets}. They can be synchronized to the current definition within the market repository. When synchornizing those assets, the will be updated for all users. % TODO on what?
+All assets are visible within this page which are available for all game master, as visible in figure~\ref{fig:assets}. They can be synchronized to the current definition within the market repository. When synchronizing those assets, they will be updated for all users. % TODO on what?
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/entities_assets.png}
@@ -117,19 +117,20 @@ A table showing all asset types which may be edited is the landing page of this 
 \end{figure}
 
 \paragraph{Currencies}
-The currencies may be edited in the same manner as the asset types. By submitting the displaying name or symbol of the corresponding currency may be changed.
+The currencies may be edited in the same manner as the asset types. By submitting changes, the displaying name or symbol of the corresponding currency will be edited.
 
 \paragraph{Customer Types}
-An overview of all in the game available customer types is provided for the administrator. For each customer type, the ideal strategic asset allocation and the ranges for currencies and asset types (both dimensions) can be modified. Additionally, the info bullets and the displaying name may be modified too.
+An overview of all in the game available customer types is provided for the administrator. For each customer type, the ideal strategic asset allocation and the ranges for currencies and asset types (both dimensions) can be modified. Additionally, the info bullets and the displaying name may be modified too. Figure~\ref{fig:customer_types} shows the embedded allocation table with its ranges and the customer types ideal SAA.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/entities_customer_types.png}
   \caption{Customer types administration}
+  \label{fig:customer_types}
 \end{figure}
 
 
 \paragraph{Sectors}
-A short overview of all sectors which are used in the asset overview.
+A short overview of all sectors which are used in the asset page when synchronizing all assets.
 
 
 
@@ -141,7 +142,7 @@ A short overview of all sectors which are used in the asset overview.
 %\begin{center}
 %  \includegraphics[scale=0.2]{img/application-overview/teams/startpage.png}
 %\end{center}
-By accessing the starting page, a team has to input a game short id which is provided from the administrator. Afterwards, the team has to login within a correct game identifier to participate within a game. The login credentials are accessible from the administrator screen fro each team (Paragraph~\ref{subparagraph:team_overview}).
+By accessing the starting page, a team has to input a game short id which is provided by the administrator. Afterward, the team has to log in within a correct game identifier to participate within a game. The login credentials are accessible from the administrator screen from each team (Paragraph~\ref{subparagraph:team_overview}). Additionally, teams get informed about possible inconsistencies when logging in on multiple devices and submitting their current decisions.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/teams/01_login.png}
@@ -149,7 +150,7 @@ By accessing the starting page, a team has to input a game short id which is pro
 \end{figure}
 
 \subsubsection{Period 0 decisions}
-In period 0 which represents phase 1 of the game, the teams define their SAA for all customer types which are enabled by the administrator of the specific game. The teams need to fulfill the ranges for all dimensions to submit their decisions. Supportive graphs in form of pie charts help the teams to decide about the share of the two dimensions. Additionally, the players can name their team on the top left corner of the screen.
+In period 0, which represents phase 1 of the game, the teams define their SAA for all customer types which are enabled by the administrator of the specific game. The teams need to fulfill the ranges for all dimensions to submit their decisions. Supportive graphs in form of pie charts help the teams to decide about the share of the two dimensions. Additionally, the players can name their team on the top left corner of the screen.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/teams/02_period_zero_decisions.png}
@@ -162,7 +163,7 @@ Starting from period 1, a team has to complete multiple decisions separated into
 For each step within this process, a progress state helps the teams to understand the state of each step. For saving their decisions, all four steps have to be completed. In the bottom left corner, the submission state may be seen.
 
 \paragraph{TAA}
-For the tactical asset allocation, the teams can deviate from the SAA due to changes in the overall market. Equal to the strategic asset allocation screen the teams change the input within the table and get illustrative support with two graphs, displaying the allocations for both dimensions of the table. Initially, the inputs from the strategic asset allocation are loaded, whereas the students can adjust them to market changes. Arrows within the total summation of each asset type or currency show the status of being within the range.
+For the tactical asset allocation, the teams can deviate from the SAA based on changes in the overall market. Equal to the strategic asset allocation screen, teams change the input within the table and get illustrative support with two graphs, displaying the allocations for both dimensions of the table. Initially, the inputs from the strategic asset allocation are loaded, whereas the students can adjust them to market changes. Arrows within the total summation of each asset type or currency show the status of being within the range of the current customer type.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/teams/04_taa.png}
@@ -183,7 +184,7 @@ This process has to be repeated for each customer type defined by navigating on 
 \paragraph{Business Administration}
 Business administration operates as the final decisions for a period. On the left side of the screen teams input numbers for four different categories: Conditions \& Fees, Human resources, logistics, and profit distribution. For each input field, the initial value (in period 1) or the previous period value (for all other periods) is displayed next to the input field.\\
 
-On the right side, the balance sheet from the previous period is visualized to inform teams about their business results. Further key information is displayed on top of the balance sheet.
+On the right side of the page, the balance sheet from the previous period is visualized to inform teams about their business results. Further key information is displayed on top of the balance sheet.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/teams/06_business.png}
@@ -192,7 +193,7 @@ On the right side, the balance sheet from the previous period is visualized to i
 
 \subsection{Reports}
 \label{subsec:reports}
-Reports are available for both administrators of a game and teams. They explain the results of the different periods of each team and compare them to the results of the other teams. As there are many graphs available, they are structured into multiple tabs, which will be explained within this subsection. The report section may be filtered by team and by periods.
+Reports are available for both administrators of a game and teams. They explain the results of the different periods of each team and compare them to the results of the other teams. As there are many graphs available, they are structured into multiple tabs, which will be explained within this subsection. The report section may be filtered by team and by periods to ensure that users can access only information which is relevant for them.
 
 \subsubsection{Overview}
 A short overview sets up the report page. A two-dimensional comparison between performance and total earnings should summarize up the investment profits of the teams, where each point represents a team at a specific period. The stock price development of the different teams shows the progress of the stock price over all periods. The best performing team concludes the last period of the game with the highest stock price. On the bottom of those graphs, there is a spider chart for each team describing indexes within a range of 0 to 10.
@@ -203,19 +204,12 @@ A short overview sets up the report page. A two-dimensional comparison between p
 \end{figure}
 
 \subsubsection{Performance}
-Multiple bar charts describe the performance of the teams for each customer type in each period. Such as:
-\begin{itemize}
-  \setlength\itemsep{0.01em}
-  \item Portfolio returns
-  \item Sharpe ratio
-  \item Traynor ratio
-  \item Jensen's alpha
-  \item Information ratio
-\end{itemize}
+Multiple bar charts describe the performance of the teams for each customer type in each period. Such as portfolio return, Sharpe ratio, Traynor ratio, Jensen's alpha, and information ratio. An overview of those charts may be seen in figure~\ref{fig:reports_performance}
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/reports/02_performance.png}
   \caption{Reports - Performance}
+  \label{fig:reports_performance}
 \end{figure}
 
 \subsubsection{Customers}
@@ -237,36 +231,22 @@ Similar to the performance tab, the customer section explains multiple key chara
 \end{figure}
 
 \subsubsection{Human ressources}
-Information about human resources (HR) is displayed using four bar charts:
-\begin{itemize}
-  \setlength\itemsep{0.01em}
-  \item Employee satisfaction index
-  \item Number of employees
-  \item Salary index
-  \item Education index
-\end{itemize}
+Information about human resources (HR) is currently displayed using four bar charts: Employee satisfaction index, number of employees, salary index, education index. Figure~\ref{fig:reports_hr} shows an exemplary scenario.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/reports/04_hr.png}
   \caption{Reports - Human ressources}
+  \label{fig:reports_hr}
 \end{figure}
 
 \subsubsection{Business and Income}
-Starting with four bar charts this tab explains about business decisions:
-\begin{itemize}
-  \setlength\itemsep{0.01em}
-  \item Operating Income
-  \item Operating expenses
-  \item Cost income ratio
-  \item Net Income
-\end{itemize}
+Starting with four bar charts (figure~\ref{fig:reports_business_income}) this tab explains about results of the business decisions, such as operating income, operating expenses, cost income ratio, and net income. In figure \ref{fig:reports_balance_sheet_comparison} different teams in different periods can be compared for their balance sheet. The users can either compare previous periods with upcoming of their own balance sheet or compare their own result to other teams in the same period.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/reports/05_business_income.png}
   \caption{Reports - Business and Income}
+  \label{fig:reports_business_income}
 \end{figure}
-
-In figure \ref{fig:reports_balance_sheet_comparison} different teams in different periods can be compared for their balance sheet. The users can either compare previous periods with upcoming of their own balance sheet or compare their own result to other teams in the same period.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/reports/05_business_income_balance_sheet_comparison.png}
@@ -276,7 +256,7 @@ In figure \ref{fig:reports_balance_sheet_comparison} different teams in differen
 
 
 \subsubsection{Economic Outlook}
-The economic outlook is the only tab, which is already accessible from period 1, as all other graphs or tabs have to be in at least period 2 because the first actual decisions (except for the saa) take place in period 1.
+The economic outlook is the only tab, which is already accessible starting from period 1, as all other graphs or tabs have to be in at least period 2 because the first actual decisions (except for the saa) take place in period 1.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/reports/06_economic_outlook.png}
