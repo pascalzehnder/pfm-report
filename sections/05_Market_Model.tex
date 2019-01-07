@@ -165,27 +165,22 @@ Next to the score index encoding the overall satisfaction of customers with a te
 
 
 \subsection{Business Model}
-As the third and final module in the chain, the business model is responsible for all calculations relating to the overall success of a team's banking institution. It calculates a complete income statement with operating returns and expenses as well as equity, dividends, and a final stock price. Next to the number of customers and score index, the stock price serves as the overall score of a team's bank.
+As the third and final module in the chain, the business model is responsible for all calculations relating to the overall success of a team's banking institution. It calculates a complete income statement with operating returns and expenses as well as equity, dividends, and a final stock price. Next to the number of customers and score index, the stock price serves as another measurement of the overall score of a team's bank.\footnote{See pfm-model/modules/api/business\_model/effective\_curves.py for an overview of all effective curves}
 
 \subsubsection{Gross Income}
 The gross income of a company includes all revenue earned by goods and services sold. Applied to the scenario of a bank in our game, the gross income can be calculated from the number of customers, assets per customer, and the fee charged for managing said assets. In the case of multiple customer types, the gross income is the sum of all the fees for each separate type.
 
-\subsubsection{Personell Spending}
-Personnel spending is based on the number of employees and computed by combination with additional factors like salary plus social expenses, education (days per employee), and staffing decisions (hire/fire and temporary staff).
+\subsubsection{Personnel Spending}
+Personnel spending is based on the number of employees and computed by combination with additional factors like salary and social expenses, education days per employee, and staffing decisions (hire/fire and temporary staff).
 
 \subsubsection{Trading Cost}
-The trading cost of a bank is comprised of a fixed trading cost based on the number of employees as well as a variable trading cost that varies with the number of transactions made by a bank.
+The trading cost of a bank is comprised of a fixed trading cost based on the number of employees as well as a variable trading cost that varies with the number of transactions made by a bank. A transaction is defined as a single change in an investment position, e.g., a change from a 10\% investment to a 20\% investment.
 
 \subsubsection{Infrastructure Cost}
-A bank's infrastructure cost has two subcomponents: the cost of a workspace needed for each employee and the cost of depreciation on technical investments of previous periods.
+A bank's infrastructure cost has two subcomponents: the cost of a workspace needed for each employee and the cost of depreciation on technical investments of previous periods. The value of technical investments before depreciation is a combination of the previous value after depreciation and the current investments into technical infrastructure.
 
 \subsubsection{Operating Income and Equity}
-The equity of a bank is calculated from the operating income (gross income minus all spending) and the equity of the previous period. Based on the payout ratio as defined by the team, dividends are paid to the bank's shareholders and subtracted from the equity. This equity after dividends will be used as an initial value in the next period.
+The equity of a bank is calculated from the operating income (gross income minus all spending) and the equity of the previous period. Based on the payout ratio as defined by the team, dividends are paid to the bank's shareholders and subtracted from the equity. This equity after dividends will be used as an initial value for the computations in the next period.
 
 \subsubsection{Stock Price}
-As a final measure, the stock price of a bank measures the confidence of shareholders in the future success of the bank. The calculation is based on the valuation of all portfolios managed by a bank as well as the valuation of the overall income, equity, and dividends, and the corresponding delta from the previous period.
-
-
-\subsection{API Specification}
-
-
+As a final measure, the stock price of a bank measures the confidence of shareholders in the current future success of the bank. The calculation is based on the valuation of all portfolios managed by a bank as well as the valuation of the overall income, equity, and dividends, and the corresponding deltas from the previous period.
