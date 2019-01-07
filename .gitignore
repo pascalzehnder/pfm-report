@@ -18,3 +18,5 @@
 *.pdf
 *.synctex(busy)
 .DS_Store
+_minted-report
+report.pyg

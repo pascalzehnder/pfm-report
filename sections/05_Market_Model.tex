@@ -36,7 +36,7 @@ The performance attribution module is the first module in the sequence of model 
 
 % modules/performance_attribution/influx.py
 \subsubsection{InfluxDB Querying}
-As can be seen in \ref{fig:market_model_overview}, one of the most important responsibilities of the performance attribution module is handling all data querying from the InfluxDB time-series database. Based on the incoming depot allocations of teams that participate in a game, the module fetches all necessary asset and benchmark series from the database. \footnote{See pfm-model/api/modules/performance\_attribution/influx.py}
+As can be seen in \cref{fig:market_model_overview}, one of the most important responsibilities of the performance attribution module is handling all data querying from the InfluxDB time-series database. Based on the incoming depot allocations of teams that participate in a game, the module fetches all necessary asset and benchmark series from the database. \footnote{See pfm-model/api/modules/performance\_attribution/influx.py}
 
 % modules/performance_attribution/returns.py
 \subsubsection{Asset \& Benchmark Returns}
@@ -54,7 +54,7 @@ Once portfolios have been built for each combination of teams and active custome
 
 % modules/performance_attribution/kpi.py
 \subsubsection{Performance Measures}
-Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \ref{table:portfolio_measures} provides an overview over all of the measures made available by the performance attribution module.
+Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \cref{table:portfolio_measures} provides an overview over all of the measures made available by the performance attribution module.
 
 \begin{table}[h!]
     \begin{tabular}{ll}
@@ -107,12 +107,18 @@ If the delta were negative, the result of the logarithm would simply be inverted
 \paragraph{Parametrization}
 To allow for easy parametrization of the effective curves, they have been extracted into a single file as lambda functions. An example for such a function is the salary index that takes in a list of salaries and computes the salary index for each one of them:
 
-ix_salary = lambda salary: utils.ensure_index_borders(
-    (salary - salary.mean()) / 20000 + 5
-)
+\begin{listing}[h!]
+    \begin{minted}{python}
+    ix_salary = lambda salary: utils.ensure_index_borders(
+        (salary - salary.mean()) / 20000 + 5
+    )
+    \end{minted}
+    \caption{Salary index as a Python lambda function}
+    \label{lst:salary_lambda}
+\end{listing}
 
 \subsubsection{Overview of Market Model Indices}
-The market model encompasses many calculations and intermediary values. \ref{fig:market_model_dependencies} shows the dependencies and interconnections between all these values, as well as how the final score index and number of customers are calculated. \ref{table:market_model_indices} shortly describes each major index and its significance.
+The market model encompasses many calculations and intermediary values. \cref{fig:market_model_dependencies} shows the dependencies and interconnections between all these values, as well as how the final score index and number of customers are calculated. \cref{table:market_model_indices} shortly describes each major index and its significance.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{img/market_model_dependencies.png}
