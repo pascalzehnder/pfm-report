@@ -9,70 +9,58 @@ A typical requirements engineering process serves as the base of our engineering
 
 
 \subsection{Interviews with Professionals}
-The structured portfolio management process is a theoretical best practice that is to be conveyed in approachable form to students participating in the new game. As a main goal is to prepare students for the experiences they will have in their working life, it was necessary to extend this theoretical best practice with some more practical information. \\
+The structured portfolio management process is a theoretical best practice that is to be conveyed in approachable form to students participating in the new game. As the main goal is to prepare students for the experiences they will have in their working life, it was necessary to extend this theoretical best practice with some more practical information. \\
 
-Due to our work for the DBF before this project, we were able to set up interviews with some professional portfolio managers. As a preparation of these interviews, we have created a set of questions (\Cref{sec:appendix\_interview\_questions}) that would aid in understanding their daily tasks and their approach to the overall process. We held interviews with two portfolio managers from different banks, namely:
+Due to our work for the DBF before this project, we were able to set up interviews with some professional portfolio managers. As preparation of these interviews, we have created a set of questions (\Cref{sec:appendix_interview_questions}) that would aid in understanding their daily tasks and their approach to the overall process. We held interviews with two portfolio managers from different banks, namely:
 
 \begin{itemize}
   \item Roger B., UBS
   \item Sandro B., Zürcher Kantonalbank
 \end{itemize}
 
-Due to the confidentiality in banking institutions, we were restricted to perform short interviews without observation. During these interviews, both interviewees have described their job and their daily tasks while being able to refer to the game, as they had played it during their studies. Additionally, we were provided with some screenshots of the internal UBS application, which later on strongly guided our design of the depot realization interface. The major results of these interviews can be found in (\Cref{sec:appendix\_interview\_questions}).
+Due to the confidentiality in banking institutions, we were restricted to perform short interviews without observation. During these interviews, both interviewees have described their job and their daily tasks while being able to refer to the game, as they had played it during their studies. Additionally, we were provided with some screenshots of the internal UBS application, which later on strongly guided our design of the depot realization interface. The major results of these interviews can be found in (\Cref{sec:appendix_interview_questions}).
+
+Interviewing the professional further allowed the extension and validation of a previously created work model that was largely based on assumptions and inputs from the DBF team. This work model is shown in \Cref{fig:work_model_professional}.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.35]{img/work_model_process.png}
+  \caption{Work Model of a Professional Portfolio Manager}
+  \label{fig:work_model_professional}
+\end{figure}
 
 
 \subsection{Observation of Participants}
-Over the course of our project, we were able to attend two real executions of the old portfolio game, during which we observed the teams during their works and spontaneously asked questions where appropriate. The two groups that were observed were quite different, as they had vastly different levels of practical experience:
+Over the course of our project, we were able to attend two real executions of the old portfolio game, during which we observed the teams during their works and spontaneously asked questions where appropriate. The two groups that were observed were quite different, as they had different levels of practical experience:
 
 \begin{itemize}
   \item Participants of the executive education program with current job positions in Banking and Finance related companies, meaning that most participants had some practical experience with the concepts in the game.
   \item Participants of the ``Advanced Portfolio Management Game (S)'' master seminar in the early fall semester, wherein most master students were assumed to possess only theoretical knowledge of the concepts.
 \end{itemize}
 
-The former execution of the game was overall very helpful in guiding the initial requirements engineering, as the experienced participants were very clear about their major frustrations with the old application. This lead to many ideas for refinements and features that were incorporated into the user stories and successfully implemented in the new application. Some of the notes compiled during this process can be found in \Cref{sec:appendix_observation_notes}.
+During the former execution of the game, the simulation itself was played during three days of a seminar. A group of about 30 participants played in groups of three and four. The authors had the chance to observe the groups during their decision-making process and ask them directly for feedback. Additionally, the seminar management collected final feedbacks as well as ideas for further development.
+This execution of the game was overall very helpful in guiding the initial requirements engineering, as the experienced participants were very clear about their major frustrations with the old application. This lead to many ideas for refinements and features that were incorporated into the user stories and successfully implemented in the new application. Some of the notes compiled during this process can be found in \Cref{sec:appendix_observation_notes}.
 
-For the latter instance of the game, recording software was installed on the computers provided by the DBF, such that all teams could be followed along in their game progress. These recordings were then used to validate assumptions of user behavior. As the old application required many media breaks (some information was handed out on paper), we were not able to follow these external discussions (without additional sound recordings).
+For the latter instance of the game, recording software was installed on the computers provided by the DBF, such that all teams could be followed along in their game progress. These recordings were then used to validate the assumptions of user behavior. As the old application required many media breaks (some information was handed out on paper), we were not able to follow these external discussions (without additional sound recordings).
 
 
 \subsection{Experimental Game with Students}
+Alongside the two executions of the game that we were able to observe, we further managed to set up an experimental setting in cooperation with the DBF team. In this experimental setting, two bachelor-level students with basic knowledge in Finance and two master students with advanced theoretical knowledge of portfolio management played two periods of a supervised game. They were handed out screenshots of the major screens, on which they could annotate everything that came to their mind or that they did not understand. Teams were allowed to ask theoretical questions that were then noted on the corresponding screenshot. \\
 
+The main goal of this experiment was to gain an understanding of the behavior and problem-solving approaches of players with different levels of experience. This would later allow to tailor the new implementation of the game to these specific needs and to potentially include features that could be activated depending on the level of knowledge of the participants. \\
 
-\subsection{Observation of Game Execution}
-Besides the interviews with experts, the project team had the opportunity during summer 2018 to collect feedback within three different game executions to deepen their knowledge for an investments process and to learn about crunch points of creating a new solution. \\
-
-Firstly, at the beginning of July, the final seminar of the Finance Executive Education took place. At this point of their study, the participants have completed most of their courses and should know the portfolio management process at least theoretically. There are also practitioners who work in the field of asset management respectively private banking. The simulation itself was played during the three days. A group of in about 30 participants played in groups of three and four. The authors had the chance to observe the groups at the beginning during their decision-making process and ask them directly for feedback. Additionally, the seminar management collected final feedbacks as well as ideas for further development at the end of the seminar, when they knew the game well, as multiple periods have been passed. \\
-
-The second setting was set up especially for observation purposes of this project. Two students on Bachelor’s level with only basic knowledge in finance and two students on Master’s level with advanced knowledge in finance played two periods of the game in a seminar room under the observation of the authors. The main intention of this run is also to gain understanding, how players with different understanding levels of the portfolio management process would approach a decision and how a new technically implemented game will improve their play procedure. In the end, they also provided detailed feedback. \\
-
-A third observation chance was the Master seminar ''Advanced Portfolio Management Game'' of the DBF at the beginning of September. During two seminar days, the simulation was conducted at the Swiss Bank Julius Bär. In combination with practical lectures, the students can deepen their understanding of portfolio management and present their outcomes in front of a critical jury. \\
-
-A large number of observed students and practitioners help to gain an overview of the game process and especially from the player’s point of view obsolete or requested elements regarding the simulation. As a result of those observations and interview with students and professionals, the following work model has been defined for a typical investment process: \\
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.35]{img/work_model_process.png}
-  \caption{Work model - global overview}
-\end{figure}
-
-
-Additionally, a number of relevant observations made by the authors as well as the seminar conductors and feedbacks from the participants during the three sessions are depicted – please note that in order to fully understand some of the following aspects, the reader should have seen the old version of the simulation:
-\begin{itemize}
-  \item \textbf{General:} Generally, the participants enjoyed playing the game and regard it as helpful to deepen their theoretical knowledge for example from the lecture ''Asset Management: Investments'' for Bachelor students. However, they regard the system as outdated and provided the authors with various ideas and critics. Decision data for a starting period 0 will be filled out by participants in Excel for a starting position before the seminar, afterward, they will be saved onto the USB drives for all teams by the seminar conductors. The seminar conductors will let the market model run and save its outcome back on the USB drive. This process is time-consuming and error-prone. In general, the participants think that it is difficult to make a decision in the first round, as too few information is available. More easily accessible comparative figures for the previous year would be helpful. Additionally, the stock selection is based on insufficient knowledge about the different titles.
-  \item \textbf{Investment Process:} The given and to be kept bandwidths for the different asset class positions are not optimally placed and have to be looked up frequently. A temporary over-investment during the decision process is not possible and is always disturbed by pop-up windows.
-  \item \textbf{Business Administration:} Various decisions regarding marketing, human resources as well as logistics are not very clear as especially in the beginning, the background and previous period information are not completely clear for the participants. The point here is, that a suitable level of abstraction has to be chosen as on the one hand, not every decision that has to be made in reality can be implemented in such a simplified simulation. On the one hand, a suitable number of decisions have to be enabled in order to support an appropriate learning effect.
-  \item \textbf{Report:} The reports provided after each round of the game load very slowly and the comparison to other teams is cumbersome. It would be helpful if not only one group member can have the simulation and the reports on their screen. In general, more graphics are desired for better visualization of key aspects.
-  \item \textbf{Teamwork:} The enabling of collaboration on several laptops within a team was mentioned many times. With today’s web-based technologies, much more implementation options are available.
-\end{itemize}
-
-The observation of the different players – students and practitioners, investment beginners and experts – allowed the project team to sense, what the strengths and weaknesses of the old game are. Further, it helped to define an impact direction for the new game being developed, which resulted in another work model describing the process of the game based on its different phases. % TODO more about customer types etc.
+Over all of the observations with students, a work model from the student perspective was progressively created, refined, and validated. This work model is shown in \Cref{fig:work_model_student}.
 
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.25]{img/work_model_pfm_game.png}
-  \caption{Work model - portfolio management game}
+  \caption{Work Model of a Student Participant}
+  \label{fig:work_model_student}
 \end{figure}
 
+
 \subsection{Design and Iterative Prototyping}
+% TODO: rework
 Initially, the authors designed multiple screens based on the predefined work model. Using a sketching software the basic screens for the student's process which includes the SAA, TAA, depot realization and business administration were prototyped. As the team realized that the game does not only consist of screens from a student perspective they decided, due to time constraints, to start implementing screens by iterative prototyping. \\
 
 Multiple concepts had to be defined, such as how to model the game session management. By defining a timeline the administrative user always gets a direct response of the state of the game. This colorful timeline builds the base of the game detail screen, while other visualizations or forms depending on the state of the game.\\
