@@ -15,7 +15,7 @@
 *.bbl
 *.toc
 *.fdb_latexmk
-*.pdf
+report.pdf
 *.synctex(busy)
 .DS_Store
 _minted-report
