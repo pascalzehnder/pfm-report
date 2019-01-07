@@ -65,7 +65,7 @@ For providing access for all teams an administrator has an overview about the te
 \end{figure}
 
 \subparagraph{Running game}
-Overview of the submission state of all teams while a game is running (figure~\ref{fig:running_game}). The administrator is able to get an insight about the decisions of all submitted teams. The period can only be finished if all teams submitted and therefore the state of the teams has become green. If a team has submitted their decisions the game master finds the last submission date of the teams right beneath the team name and when unfolding a teams detail, they can get an insight into teams SAA decisions.
+Overview of the submission state of all teams while a game is running (figure~\ref{fig:running_game}). The administrator is able to get an insight about the decisions of all submitted teams. The period can only be finished if all teams submitted and therefore the state of the teams has become green. If a team has submitted their decisions the game master finds the last submission date of the teams right beneath the team name and when unfolding a teams detail, they can get an insight into the teams' SAA decisions.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/07_running_game.png}
@@ -74,7 +74,7 @@ Overview of the submission state of all teams while a game is running (figure~\r
 \end{figure}
 
 \subparagraph{Initializing period}
-After completion of period zero, the administrator has to initialize a period in which the team decisions will be compared to the other teams decisions and evaluated. Additionally, new customer types for the next period and other settings could be defined in this phase of the game.
+After completing period zero, the administrator has to initialize a period in which the team decisions will be compared to the other team decisions and evaluated. Additionally, new customer types for the next period and other settings could be defined in this phase of the game. New customer types may be added for the next period, but all existing ones are non deletable. A new customer type has an initial number of customers as defined in the game creation form.
 % TODO replace with a screen including customer type settings from period 2 e.g.
 \begin{figure}[h!]
   \centering
@@ -84,7 +84,7 @@ After completion of period zero, the administrator has to initialize a period in
 
 
 \subparagraph{Period start}
-By completing the simulation, respectively evaluation of the previous period, a next period may be started. If the game is still paused the teams cannot access the decisions site. The administrator can define some optional messages which will be displayed in the teams report page. Some adjustments to the simulation results will be edited in this phase of the game.
+By completing the simulation, respectively evaluation of the previous period, a next period is ready to be started. During a paused game the teams cannot access the decisions sites, they will be informed using a message box. The supervisor can define some optional messages which will be displayed in the teams report page. Some adjustments to the simulation results will be edited in this phase of the game.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/09_period_start.png}
@@ -92,17 +92,18 @@ By completing the simulation, respectively evaluation of the previous period, a 
 \end{figure}
 
 \subsubsection{Reports}
-For the presentation of the teams result in between two running periods being played, a report is accessible for the administrator. A more detailed description will be in section X, as the teams access the same reports as the administrator.
+For the presentation of the team results in between two running periods being played, a report is accessible for the administrator. A more detailed description will be in section~\ref{subsec:reports}, as the teams accesses the same reports as the administrator of that running game.
 
 
 \subsubsection{Entities administration}
 
 \paragraph{Assets}
-All assets are visible within this page. They can be synchronized to the current definition within the market repository. % TODO on what?
+All assets are visible within this page which are available for all game master, as visible in figure~\ref{fig:assets}. They can be synchronized to the current definition within the market repository. When synchornizing those assets, the will be updated for all users. % TODO on what?
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.2]{img/application-overview/administrator/entities_assets.png}
   \caption{Assets administration}
+  \label{fig:assets}
 \end{figure}
 
 
@@ -190,6 +191,7 @@ On the right side, the balance sheet from the previous period is visualized to i
 \end{figure}
 
 \subsection{Reports}
+\label{subsec:reports}
 Reports are available for both administrators of a game and teams. They explain the results of the different periods of each team and compare them to the results of the other teams. As there are many graphs available, they are structured into multiple tabs, which will be explained within this subsection. The report section may be filtered by team and by periods.
 
 \subsubsection{Overview}
