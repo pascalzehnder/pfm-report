@@ -7,12 +7,12 @@
     \label{fig:market_model_overview}
 \end{figure}
 
-The PFM-Game market model is a module that produces period results based on the business decisions and portfolio allocations of teams participating in a given game. During the execution of a game, the market model is executed once per period once the game master decides to complete a period and send a period scoring request. The market model is separated into several subcomponents that then, when applied in sequence, produce results for the given period of the game.
+The PFM-Game market model is a module that produces period results based on the business decisions and portfolio allocations of teams participating in a given game. During the execution of a game, the market model is executed once per period once the game master decides to complete a period and send a period scoring request. The market model is separated into several subcomponents that, when applied in sequence, produce results for the given period of the game.
 
 \subsection{Data and Data Ingestion}
-The underlying data driving all portfolio-related calculations in the market model is comprised of several hunderd time-series that are stored in InfluxDB, a database specialized in time-series management. The majority of these time-series describe asset price or return indices (i.e., asset prices normalized by the payment of dividends and other interest) as extracted from the Thomson Reuters Datastream platform. Further relevant time-series are based on macroeconomic data extracted from the FRED (Federal Reserve Economic Data) database. These data are used to calculate portfolio and benchmark returns as well as parameters of an economic forecast.
+The underlying data driving all portfolio-related calculations in the market model is comprised of several hundred time-series that are stored in InfluxDB, a database specialized in time-series management. The majority of these time-series describe asset price or return indices (i.e., asset prices normalized by the payment of dividends and other interest) as extracted from the Thomson Reuters Datastream platform. Further relevant time-series are based on macroeconomic data extracted from the FRED (Federal Reserve Economic Data) database. These data are used to calculate portfolio and benchmark returns as well as parameters of an economic forecast.
 
-The above described data can be extracted from Datastream and FRED and ingested into an instance of InfluxDB automatically by means of a Python module that was created as an extension to the \textit{PFM-Simulation} project. Data to be ingested is defined inside an assets.csv file in the following CSV format:
+The above-described data can be extracted from Datastream and FRED and ingested into an instance of InfluxDB automatically by means of a Python module that was created as an extension to the \textit{PFM-Simulation} project. Data to be ingested is defined inside an assets.csv file in the following CSV format:
 
 \begin{table}[h!]
     \begin{tabular}{lllllll}
@@ -50,11 +50,11 @@ In addition to building portfolios for all depot allocations of the current peri
 
 % modules/performance_attribution/returns.py
 \subsubsection{Portfolio Returns}
-Once portfolios have been built for each combination of teams and active customer types, returns need to be calculated in the same way that returns were calculated for the assets previously. To compute a portfolio return, the separate asset returns need to be weighted by the amount of money that has been invested into each asset. For example, if a team were to invest 10\% of their total assets under management in one asset and 20\% in another, the latter would influence the overall portfolio returns twice as much as the former.
+Once portfolios have been built for each combination of teams and active customer types, returns need to be calculated in the same way that returns were calculated for the assets previously. To compute a portfolio return, the separate asset returns need to be weighted by the amount of money that has been invested in each asset. For example, if a team were to invest 10\% of their total assets under management in one asset and 20\% in another, the latter would influence the overall portfolio returns twice as much as the former.
 
 % modules/performance_attribution/kpi.py
 \subsubsection{Performance Measures}
-Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \cref{table:portfolio_measures} provides an overview over all of the measures made available by the performance attribution module.
+Upon completion of all previous returns calculations, the returns of assets, benchmarks, and portfolios can be combined into many useful performance measures that characterize a portfolio in different ways and allow for an easy performance comparison between teams. \cref{table:portfolio_measures} provides an overview of all of the measures made available by the performance attribution module.
 
 \begin{table}[h!]
     \begin{tabular}{lp{9cm}}
@@ -89,7 +89,7 @@ The results of the performance attribution module are then compiled into a suita
 
 
 \subsection{Market Model}
-The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams for the current period and performs several grading procedures based on all of these data. The final output of the module are several index and subindex values that, e.g., describe the employee satisfaction on a range from 0 to 10. The market model module is based on the Excel formulation created by the DBF and was extended by the ability to handle multiple customer types as well as integration with the other modules.
+The market model module is the second module in the sequence of calculations and builds upon the results of the performance attribution module. It ingests these results as well as business decisions of all teams for the current period and performs several grading procedures based on all of these data. The final output of the module consists of several index and subindex values that, e.g., describe the employee satisfaction on a range from 0 to 10. The market model module is based on the Excel formulation created by the DBF and was extended by the ability to handle multiple customer types as well as integration with the other modules.
 
 As the market model is comprised of many individual calculation steps and formulas, we will not go deeply into technical specifics of single formulas. Instead, we focus on the overall structure of the module and its main subcomponents as well as how the underlying effective curves (i.e., formulas) can be parametrized and fine-tuned.
 
@@ -102,10 +102,10 @@ A simple example for an effective curve could be:
 where the value would be constrained to lie within \([0, 10]\). More complex variants apply different functions based on the domain of the delta value. As a specific example, the full returns index is computed as follows (if the delta value is positive):
 \[\text{returns index} = 5 + \log(1 + 10 * |(return - return_{avg}) * 100|)\]
 
-If the delta were negative, the result of the logarithm would simply be inverted to its negative value.
+If the delta were negative, the result of the logarithm calculation would simply be inverted to its negative value.
 
 \paragraph{Parametrization}
-To allow for easy parametrization of the effective curves, they have been extracted into a single file as lambda functions.\footnote{See pfm-model/api/modules/market\_model/effective\_curves.py} An example for such a function is the salary index as shown in \cref{}. The salary index takes a list of salaries and computes an index for each team (within \([0, 10]\)).
+To allow for easy parametrization of the effective curves, they have been extracted into a single file as lambda functions.\footnote{See pfm-model/api/modules/market\_model/effective\_curves.py} An example of such a function is the salary index as shown in \cref{}. The salary index takes a list of salaries and computes an index for each team (within \([0, 10]\)).
 
 \begin{listing}[h!]
     \begin{minted}{python}
@@ -118,7 +118,7 @@ To allow for easy parametrization of the effective curves, they have been extrac
 \end{listing}
 
 \subsubsection{Overview of Market Model Indices}
-The market model encompasses many effective curves and intermediary values. Many of these values are highly dependent on other previously calculated values. \Cref{fig:market_model_dependencies} shows the dependencies and interconnections between all the major input values in the market model, as well as how the final score index and number of customers are calculated from these input values. \Cref{table:market_model_indices} shortly describes each major index and its significance.
+The market model encompasses many effective curves and intermediary values. Many of these values are highly dependent on other previously calculated values. \Cref{fig:market_model_dependencies} shows the dependencies and interconnections between all the major input values in the market model, as well as how the final score index and the number of customers are calculated from these input values. \Cref{table:market_model_indices} shortly describes each major index and its significance.
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]{img/market_model_dependencies.png}
@@ -171,19 +171,19 @@ As the third and final module in the chain, the business model is responsible fo
 The gross income of a company includes all revenue earned by goods and services sold. Applied to the scenario of a bank in our game, the gross income can be calculated from the number of customers, assets per customer, and the fee charged for managing said assets. In the case of multiple customer types, the gross income is the sum of all the fees for each separate type.
 
 \subsubsection{Personell Spending}
-Personell spending is based on the number of employees and computed by combination with additional factors like salary plus social expenses, education (days per employee), and staffing decisions (hire/fire and temporary staff).
+Personnel spending is based on the number of employees and computed by combination with additional factors like salary plus social expenses, education (days per employee), and staffing decisions (hire/fire and temporary staff).
 
 \subsubsection{Trading Cost}
 The trading cost of a bank is comprised of a fixed trading cost based on the number of employees as well as a variable trading cost that varies with the number of transactions made by a bank.
 
 \subsubsection{Infrastructure Cost}
-A bank's infrastructure cost has two subcomponents: the cost of a workspace needed for each employee and the cost of depreciations on technical investments of previous periods.
+A bank's infrastructure cost has two subcomponents: the cost of a workspace needed for each employee and the cost of depreciation on technical investments of previous periods.
 
 \subsubsection{Operating Income and Equity}
 The equity of a bank is calculated from the operating income (gross income minus all spending) and the equity of the previous period. Based on the payout ratio as defined by the team, dividends are paid to the bank's shareholders and subtracted from the equity. This equity after dividends will be used as an initial value in the next period.
 
 \subsubsection{Stock Price}
-As a final measure, the stock price of a bank measures the confidence of shareholders in the future success of the bank. The calculation is based on the  valuation of all portfolios managed by a bank as well as the valuation of the overall income, equity, and dividends, and the corresponding delta from the previous period.
+As a final measure, the stock price of a bank measures the confidence of shareholders in the future success of the bank. The calculation is based on the valuation of all portfolios managed by a bank as well as the valuation of the overall income, equity, and dividends, and the corresponding delta from the previous period.
 
 
 \subsection{API Specification}
