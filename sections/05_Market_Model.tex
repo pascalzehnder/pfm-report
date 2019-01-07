@@ -105,7 +105,7 @@ where the value would be constrained to lie within \([0, 10]\). More complex var
 If the delta were negative, the result of the logarithm calculation would simply be inverted to its negative value.
 
 \paragraph{Parametrization}
-To allow for easy parametrization of the effective curves, they have been extracted into a single file as lambda functions.\footnote{See pfm-model/api/modules/market\_model/effective\_curves.py} An example of such a function is the salary index as shown in \cref{}. The salary index takes a list of salaries and computes an index for each team (within \([0, 10]\)).
+To allow for easy parametrization of the effective curves, they have been extracted into a single file as lambda functions.\footnote{See pfm-model/api/modules/market\_model/effective\_curves.py} An example of such a function is the salary index as shown in \cref{lst:salary_lambda}. The salary index takes a list of salaries and computes an index for each team (within \([0, 10]\)).
 
 \begin{listing}[h!]
     \begin{minted}{python}
